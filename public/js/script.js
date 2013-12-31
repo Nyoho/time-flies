@@ -1,14 +1,3 @@
-var calc = function() {
-    // puts "今年(" + now.year.to_s + "年)もあと "+((1-ratio)*100).round(4).to_s+ " % "
-
-    // puts ""+(ratio*100).round(4).to_s+ " % DONE"
-
-    // puts "1日でたとえると " + ((this_new_year + 24*60*60*ratio).strftime "%H:%M:%S")
-    // print "人類20万年の歴史でいうと西暦"
-    // print ((now.year - 200000) + 200000*ratio).to_i
-    // print "年\n"
-}
-
 $(function(){
       var current = $('#current-time');
       var ratio = $('#ratio');
@@ -20,8 +9,12 @@ $(function(){
       var oneDayString = "";
       var humanString = "";
 
+      var zzz_format = function(num) {
+          return ( num < 10 ) ? '00' + num : ( ( num < 100 ) ? '0' + num : num );
+      };
+
       var date_format = function(num) {
-          return ( num < 10 ) ? '0' + num  : num;
+          return ( num < 10 ) ? '0' + num : num;
       };
       
       var calc = function() {
@@ -31,7 +24,7 @@ $(function(){
 
           r = (now - thisNewYear) / (nextNewYear - thisNewYear);
           var d = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
-          oneDayString = date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + date_format( d.getMilliseconds() );
+          oneDayString = date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + zzz_format( d.getMilliseconds() );
 
           d = 2013 + 200000.0*(r-1.0);
           if (d >= 0) {
@@ -44,7 +37,7 @@ $(function(){
 
       function render(){
           var d = now;
-          var s = "" + d.getFullYear() + '年' + date_format( d.getMonth() + 1 ) + '月' + date_format( d.getDate() )+ '日 ' + date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + date_format( d.getMilliseconds() );;
+          var s = "" + d.getFullYear() + '年' + date_format( d.getMonth() + 1 ) + '月' + date_format( d.getDate() )+ '日 ' + date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + zzz_format( d.getMilliseconds() );;
           current.text(s);
           ratio.text((r * 100.0).toFixed(7));
           remain.text(((1-r) * 100.0).toFixed(7));
