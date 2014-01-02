@@ -1,3 +1,41 @@
+function myCtrl($scope, $timeout) {
+    $scope.now;
+    loop();
+
+    function loop() {
+        requestAnimationFrame(loop);
+        calc();
+    }
+
+    function calc() {
+        $scope.now = new Date();
+        var now = $scope.now;
+        var nextNewYear = new Date(now.getFullYear()+1,0,1);
+        var thisNewYear = new Date(now.getFullYear(),0,1);
+        
+        $scope.r = (now - thisNewYear) / (nextNewYear - thisNewYear);
+
+        var r = $scope.r;
+
+        var d = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
+        // oneDayString = date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + zzz_format( d.getMilliseconds() );
+        
+        // d = 2013 + 200000.0*(r-1.0);
+        // if (d >= 0) {
+        //     humanString = "西暦 " + parseInt(d) + " 年"
+        // } else {
+        //     humanString = "紀元前 " + parseInt(-d) + " 年"
+        // }
+        
+        $scope.$apply();
+    }
+
+    $scope.tweet = function (){
+        $scope.$broadcast('timer-start');
+        $scope.timerRunning = true;
+    };
+}
+
 $(function(){
       var current = $('#current-time');
       var ratio = $('#ratio');
@@ -50,7 +88,7 @@ $(function(){
           render();
           requestAnimationFrame(loop);
       }
-      loop();
+      // loop();
   });
 
 window.requestAnimationFrame = (function(){

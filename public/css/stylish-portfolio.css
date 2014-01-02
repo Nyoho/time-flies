@@ -127,6 +127,9 @@ body {
 /* Services */
 
 .services {
+  display: table;
+  height: 100%;
+  width: 100%;
   background: #020607;
   padding: 50px 0;
   color: #93DBFE;
@@ -137,7 +140,7 @@ body {
 }
 
 i.service-icon {
-  border: 3px solid #ffffff;
+  border: 3px solid #93DBFE;
   border-radius: 50%;
   display: inline-block;
   font-size: 56px;
@@ -151,11 +154,12 @@ i.service-icon {
 /* Callout */
 
 .callout {
-  color: #ffffff;
+  color: #888;
   display: table;
-  height: 400px;
+  height: 100%;
   width: 100%;
-  background: url(../img/callout.jpg) no-repeat center center fixed; 
+  background-color: #020223;
+  /* background: url(../img/callout.jpg) no-repeat center center fixed;  */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
