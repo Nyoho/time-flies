@@ -1,5 +1,6 @@
+
 function myCtrl($scope, $timeout) {
-    $scope.now;
+    $scope.Math = window.Math;
     loop();
 
     function loop() {
@@ -13,19 +14,19 @@ function myCtrl($scope, $timeout) {
         var nextNewYear = new Date(now.getFullYear()+1,0,1);
         var thisNewYear = new Date(now.getFullYear(),0,1);
         
-        $scope.r = (now - thisNewYear) / (nextNewYear - thisNewYear);
+        $scope.ratio = (now - thisNewYear) / (nextNewYear - thisNewYear);
+        $scope.remain = 1 - $scope.ratio;
 
-        var r = $scope.r;
-
-        var d = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
-        // oneDayString = date_format( d.getHours() ) + ':' + date_format( d.getMinutes() ) + ':' + date_format( d.getSeconds() ) + '.' + zzz_format( d.getMilliseconds() );
+        var r = $scope.ratio;
+        $scope.oneDay = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
         
-        // d = 2013 + 200000.0*(r-1.0);
-        // if (d >= 0) {
-        //     humanString = "西暦 " + parseInt(d) + " 年"
-        // } else {
-        //     humanString = "紀元前 " + parseInt(-d) + " 年"
-        // }
+        var d = 2013 + 200000.0*(r-1.0);
+        $scope.humanYear = Math.abs(d);
+        if (d >= 0) {
+            $scope.human = "西暦 " + parseInt(d) + " 年"
+        } else {
+            $scope.human = "紀元前 " + parseInt(-d) + " 年"
+        }
         
         $scope.$apply();
     }
@@ -83,12 +84,6 @@ $(function(){
           human.text(humanString);
       }
       
-      function loop(){
-          calc();
-          render();
-          requestAnimationFrame(loop);
-      }
-      // loop();
   });
 
 window.requestAnimationFrame = (function(){

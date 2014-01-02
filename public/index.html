@@ -25,7 +25,7 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a></li>
+        <li class="sidebar-brand"><a href="http://nyoho.jp">Nyoho.jp</a></li>
         <li><a href="#top">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
@@ -41,8 +41,8 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
               <h1>{{ now | date:'yyyy' }}年</h1>
-              <h3>本年をいろいろな角度から眺めてみましょう。</h3>
-              <a href="#services" class="btn  btn-lg">Take a look</a>
+              <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
+              <!-- <a href="#services" class="btn  btn-lg">Take a look</a> -->
             </div>
           </div>
           <div class="row">
@@ -51,43 +51,71 @@
           <div class="row">
             <div class="col-md-2 col-md-offset-1 text-center">
               <div class="service-item">
-                <i class="service-icon fa fa-rocket"></i>
+
+                <div class="circle-box">
+                  <div class="cell">
+                    <div>{{ now | date:'yyyy年MM月dd日' }}</div>
+                    <div>{{ now | date:'HH:mm:ss.sss' }}</div>
+                  </div>
+                </div>
+
                 <h4>現在時刻</h4>
-                <p>{{ now | date:'yyyy年MM月dd日 HH:mm:ss.sss' }}<span id="current-time"></span></p>
+
+              </div>
+            </div>
+            <div class="col-md-2 text-center">
+              <div class="service-item">
+                <div class="circle-box">
+                  <div class="cell">
+                    <div><span class="main-part">{{ Math.floor(ratio*100) }}</span>.<span class="">{{ Math.floor((ratio*100-Math.floor(ratio*100))*10000000)  }}</span> %</div>
+                  </div>
+                </div>
+                <h4>終了</h4>
                 <div class="tweet">
                   <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fseveral-times.herokuapp.com&hashtags=SeveralTimes,times&text={{now | date:'yyyy'}}"> 
+                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fseveral-times.herokuapp.com&hashtags=SeveralTimes&text=今年は{{ ratio*100 | number:4 }}パーセント終了しました。"> 
                     <i class="fa fa-twitter fa-2x"></i></a></p>
                 </div>
               </div>
             </div>
             <div class="col-md-2 text-center">
               <div class="service-item">
-                <i class="service-icon fa fa-arrow-right"></i>
-                <h4>終了</h4>
-                <p><span id="ratio"></span> %</p>
-              </div>
-            </div>
-            <div class="col-md-2 text-center">
-              <div class="service-item">
-                <i class="service-icon fa fa-arrow-right"></i>
-                <span id="remain"></span> %
+                <div class="circle-box">
+                  <div class="cell">
+                    <div><span class="main-part">{{ Math.floor(remain*100) }}</span>.<span class="">{{ Math.floor((remain*100-Math.floor(remain*100))*10000000)  }}</span> %</div>
+                  </div>
+                </div>
                 <h4>残り</h4>
+                <div class="tweet">
+                  <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
+                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fseveral-times.herokuapp.com&hashtags=TimeFlies&text=今年も残すところあと {{ remain*100 | number:4 }} パーセントです。"> 
+                    <i class="fa fa-twitter fa-2x"></i></a></p>
+                </div>
               </div>
             </div>
             <div class="col-md-2 text-center">
               <div class="service-item">
-                <i class="service-icon fa fa-shield"></i>
+                <div class="circle-box">
+                  <div class="cell">
+                    <div>
+                      <span class="main-part">{{ oneDay | date:'HH:mm:ss' }}</span>.{{ oneDay | date:'sss' }}</div>
+                  </div>
+                </div>
                 <h4>1日なら</h4>
-                <p>今年1年を1日にたとえると、現在 <span id="one-day"></span> です。</p>
+                <p>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
               </div>
             </div>
             <div class="col-md-2 text-center">
               <div class="service-item">
-                <i class="service-icon fa fa-pencil"></i>
+                <div class="circle-box">
+                  <div class="cell">
+                    <div>{{human}}</div>
+                  </div>
+                </div>
                 <h4>人類の歴史なら</h4>
-                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在 <span id="human"></span> です。</p>
+                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{{human}}</span>です。</p>
               </div>
             </div>
           </div>
@@ -101,8 +129,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center">
-            <h2>Subtle Sidebar is the Perfect Template for your Next Portfolio Website Project!</h2>
-            <p class="lead">This template really has it all. It's up to you to customize it to your liking! It features some fresh photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+            <h2>光陰、矢のごとし。</h2>
+            <p class="lead">時間が過ぎ去りゆくのは、まるで矢のようであります。</p>
           </div>
         </div>
       </div>
@@ -113,11 +141,10 @@
     <!-- Callout -->
     <div class="callout">
       <div class="vert-text">
-        <h1>A Dramatic Text Area</h1>
+        <h1>Time Flies.</h1>
       </div>
     </div>
     <!-- /Callout -->
-
 
     <!-- Call to Action -->
     <div class="call-to-action">
