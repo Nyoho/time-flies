@@ -3,9 +3,33 @@ function myCtrl($scope, $timeout) {
     $scope.Math = window.Math;
     loop();
 
+    function zerofill(x, prec) {
+        return ('00000000000000000000000000000000' + x).slice(-prec);
+    }
+
     function loop() {
         requestAnimationFrame(loop);
         calc();
+    }
+
+    function calcDecimals() {
+        var a = (($scope.ratio * 100) + '').split('.');
+        if (a.length < 2) {
+            $scope.intRatio = a[0];
+            $scope.decRatio = '0000000';
+        } else {
+            $scope.intRatio = a[0];
+            $scope.decRatio = a[1].slice(0,7);
+        }
+
+        a = (($scope.remain * 100) + '').split('.');
+        if (a.length < 2) {
+            $scope.intRemain = a[0];
+            $scope.decRemain = '0000000';
+        } else {
+            $scope.intRemain = a[0];
+            $scope.decRemain = a[1].slice(0,7);
+        }
     }
 
     function calc() {
@@ -19,6 +43,7 @@ function myCtrl($scope, $timeout) {
 
         var r = $scope.ratio;
         $scope.oneDay = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
+        calcDecimals();
         
         var d = 2013 + 200000.0*(r-1.0);
         $scope.humanYear = Math.abs(d);

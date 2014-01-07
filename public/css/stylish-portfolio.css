@@ -15,8 +15,10 @@ body {
 .vert-text h1 {
   padding: 0;
   margin: 0;
-  font-size: 4.5em;
-  font-weight: 700;
+  font-family: 'HelveticaNeue-UltraLight', 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 100;
+  line-height: 1.3em;
+  font-size: 6em;
 }
 
 /* Side Menu */
@@ -157,7 +159,7 @@ i.service-icon {
 
 .circle-box {
   margin: 48px auto 0;
-  border: 3px solid #93DBFE;
+  border: 2px solid #93DBFE;
   border-radius: 50%;
   width: 140px;
   height: 140px;
@@ -176,12 +178,11 @@ i.service-icon {
 /* Callout */
 
 .callout {
-  color: #888;
+  color: #fff;
   display: table;
-  height: 50%;
   width: 100%;
   background-color: #020223;
-  /* background: url(../img/callout.jpg) no-repeat center center fixed;  */
+  background: url(../img/hoge.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -252,7 +253,7 @@ i.scroll:hover {
   }
 
   .callout {
-	background: url(../img/callout.jpg) no-repeat center center scroll; 
+	background: url(../img/hoge.jpg) no-repeat center center scroll; 
   }
 
   .map {

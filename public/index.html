@@ -21,16 +21,14 @@
   <body>
 
     <!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <a id="menu-toggle" href="#" class="btn btn-lg toggle"><i class="fa fa-bars"></i></a>
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <li class="sidebar-brand"><a href="http://nyoho.jp">Nyoho.jp</a></li>
-        <li><a href="#top">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#top">トップへ</a></li>
+        <li><a href="#detail">詳細</a></li>
+        <li><a href="#contact">コンタクト</a></li>
       </ul>
     </div>
     <!-- /Side Menu -->
@@ -39,8 +37,8 @@
       <div class="vert-text">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-              <h1>{{ now | date:'yyyy' }}年</h1>
+            <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
+              <h1>{{ now | date:'yyyy' }}</h1>
               <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
               <!-- <a href="#services" class="btn  btn-lg">Take a look</a> -->
             </div>
@@ -49,7 +47,7 @@
             <div id="bar-graph"></div>
           </div>
           <div class="row">
-            <div class="col-md-2 col-md-offset-1 text-center">
+            <div class="col-md-2 col-md-offset-1 col-sm-12 text-center">
               <div class="service-item">
 
                 <div class="circle-box">
@@ -63,11 +61,12 @@
 
               </div>
             </div>
-            <div class="col-md-2 text-center">
+            <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div><span class="main-part">{{ Math.floor(ratio*100) }}</span>.<span class="">{{ Math.floor((ratio*100-Math.floor(ratio*100))*10000000)  }}</span> %</div>
+                    <div><span class="main-part">{{ intRatio }}</span>.<span class="">{{ decRatio }}</span> %</div>
+                    <!-- <div><span class="main-part"><sup>1</sup>&frasl;<sub>10</sub></span></div> -->
                   </div>
                 </div>
                 <h4>終了</h4>
@@ -79,11 +78,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 text-center">
+            <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div><span class="main-part">{{ Math.floor(remain*100) }}</span>.<span class="">{{ Math.floor((remain*100-Math.floor(remain*100))*10000000)  }}</span> %</div>
+                    <div><span class="main-part">{{ intRemain }}</span>.<span class="">{{ decRemain }}</span> %</div>
                   </div>
                 </div>
                 <h4>残り</h4>
@@ -95,7 +94,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 text-center">
+            <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
@@ -107,7 +106,7 @@
                 <p>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
               </div>
             </div>
-            <div class="col-md-2 text-center">
+            <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
@@ -139,9 +138,9 @@
   
 
     <!-- Callout -->
-    <div class="callout">
+    <div class="callout intro">
       <div class="vert-text">
-        <h1>Time Flies.</h1>
+        <h1>Time flies.</h1>
       </div>
     </div>
     <!-- /Callout -->
@@ -177,6 +176,7 @@
             <p>
               Copyright &copy; <a href="http://nyoho.jp">Nyoho</a> 2013-2014.
               テンプレートは <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。
+              Photo by <a href="http://www.flickr.com/photos/aussiegall/5142802726/">aussiegall Louise Docker</a>
             </p>
           </div>
         </div>
