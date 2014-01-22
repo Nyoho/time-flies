@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/Nyoho/several-times.png)](https://travis-ci.org/Nyoho/several-times)
+[![Build Status](https://travis-ci.org/Nyoho/time-flies.png)](https://travis-ci.org/Nyoho/time-flies)
 
-# Several Times
+# Time Flies
 
 ## Thanks
 

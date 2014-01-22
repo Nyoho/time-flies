@@ -5,6 +5,6 @@ deploy:
   provider: heroku
   api_key:
     secure: KftCO0gQo3ZvSzixclcBi+1xGaYg5lIGWG3TERPXCFFMFFCjw1V6UF37bPnzCSY2zjGfphRiGS6ezecyz+KrSUFjFDWgUxy99lDbT0b2zI+s8jhDkSU/tEFDJoaeU7z++NLz74PO/YKzn+ZM16hxdLxohL+Cya53dOKbqvuHEYM=
-  app: several-times
+  app: time-flies
   on:
-    repo: Nyoho/several-times
+    repo: Nyoho/time-flies

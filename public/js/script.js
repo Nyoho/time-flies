@@ -1,4 +1,3 @@
-
 function myCtrl($scope, $timeout) {
     $scope.Math = window.Math;
     loop();
@@ -52,7 +51,9 @@ function myCtrl($scope, $timeout) {
         } else {
             $scope.human = "紀元前 " + parseInt(-d) + " 年"
         }
-        
+
+        var f = new Fraction(3,6);
+        $scope.human = f.numerator + ' / ' + f.denominator;
         $scope.$apply();
     }
 
