@@ -39,7 +39,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
-              <h1>{{ now | date:'yyyy' }}</h1>
+              <h1 ng-cloak>{{ now | date:'yyyy' }}</h1>
               <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
               <!-- <a href="#services" class="btn  btn-lg">Take a look</a> -->
             </div>
@@ -53,8 +53,8 @@
 
                 <div class="circle-box">
                   <div class="cell">
-                    <div>{{ now | date:'yyyy年MM月dd日' }}</div>
-                    <div>{{ now | date:'HH:mm:ss.sss' }}</div>
+                    <div ng-cloak>{{ now | date:'yyyy年MM月dd日' }}</div>
+                    <div ng-cloak>{{ now | date:'HH:mm:ss.sss' }}</div>
                   </div>
                 </div>
 
@@ -66,7 +66,7 @@
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div><span class="main-part">{{ intRatio }}</span>.<span class="">{{ decRatio }}</span> %</div>
+                    <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
                     <!-- <div><span class="main-part"><sup>1</sup>&frasl;<sub>10</sub></span></div> -->
                   </div>
                 </div>
@@ -83,7 +83,7 @@
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div><span class="main-part">{{ intRemain }}</span>.<span class="">{{ decRemain }}</span> %</div>
+                    <div><span class="main-part" ng-cloak>{{ intRemain }}</span>.<span class="" ng-cloak>{{ decRemain }}</span> %</div>
                   </div>
                 </div>
                 <h4>残り</h4>
@@ -99,23 +99,23 @@
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div>
+                    <div ng-cloak>
                       <span class="main-part">{{ oneDay | date:'HH:mm:ss' }}</span>.{{ oneDay | date:'sss' }}</div>
                   </div>
                 </div>
                 <h4>1日なら</h4>
-                <p>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
+                <p ng-cloak>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
               </div>
             </div>
             <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
                 <div class="circle-box">
                   <div class="cell">
-                    <div>{{human}}</div>
+                    <div ng-cloak>{{human}}</div>
                   </div>
                 </div>
                 <h4>人類の歴史なら</h4>
-                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{{human}}</span>です。</p>
+                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human" ng-cloak>{{human}}</span>です。</p>
               </div>
             </div>
           </div>
