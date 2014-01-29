@@ -263,4 +263,7 @@ i.scroll:hover {
 	height: 75%;
   }
 
+  h3 {
+    font-size: 18px;
+  }
 }
