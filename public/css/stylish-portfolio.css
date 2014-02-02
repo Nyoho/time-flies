@@ -267,3 +267,39 @@ i.scroll:hover {
     font-size: 18px;
   }
 }
+
+
+.flip.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+ 
+.flip.animate-enter.flip.animate-enter-active {
+	opacity: 1;
+}
+.ng-enter,
+.ng-leave,
+.ng-move {
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+.flip.ng-enter {
+  opacity: 0;
+}
+.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.ng-leave {
+  opacity: 1;
+}
+.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.ng-move {
+  opacity: .5;
+}
+.ng-move.ng-move-active {
+  opacity: 1;
+}
+

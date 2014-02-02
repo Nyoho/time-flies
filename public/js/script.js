@@ -1,3 +1,4 @@
+// var this.myapp = angular.module("myapp", ["ngRoute", "ngAnimate"]);
 function myCtrl($scope, $timeout) {
     $scope.Math = window.Math;
     loop();
@@ -59,6 +60,9 @@ function myCtrl($scope, $timeout) {
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;
     };
+
+    $scope.flip = function() {
+    }
 }
 
 $(function(){
