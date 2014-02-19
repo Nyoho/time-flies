@@ -3,6 +3,34 @@ function myCtrl($scope, $timeout) {
     $scope.Math = window.Math;
     loop();
 
+    function continuousFraction(x) {
+        var a = x;
+        var b = a % 1;
+        var a0 = Math.round(a - b);
+        if (b == 0)
+            return a0;
+        a = 1/b;
+        b = a % 1;
+        var a1 = Math.round(a - b);
+        if (b == 0)
+            return new Fraction(a0*a1+1, a1);
+        a = 1/b;
+        b = a % 1;
+        var a2 = Math.round(a - b);
+        return new Fraction(a0*(a1*a2+1)+a2, a1*a2+1);
+    }
+
+    $scope.infrequentUpdate = function(){
+        $timeout(function(){
+                     var r = continuousFraction($scope.ratio);
+                     $scope.fracDenominator = r.denominator;
+                     $scope.fracNumerator = r.numerator;
+                     
+                     $scope.infrequentUpdate();
+                 },3000);
+    }
+    $scope.infrequentUpdate()
+
     function zerofill(x, prec) {
         return ('00000000000000000000000000000000' + x).slice(-prec);
     }
@@ -60,9 +88,6 @@ function myCtrl($scope, $timeout) {
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;
     };
-
-    $scope.flip = function() {
-    }
 }
 
 $(function(){

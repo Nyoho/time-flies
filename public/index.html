@@ -85,18 +85,25 @@
                     <div ng-switch-when="1">
                       <div class="circle-box">
                         <div class="cell">
-                          <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ 1 }}</sup>&frasl;<sub>{{ 10 }}</sub></span></div>
+                          <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ fracNumerator }}</sup>&frasl;<sub>{{ fracDenominator }}</sub></span></div>
                         </div>
                       </div>
                     </div> <!-- /ng-switch -->
                     </div>
                   </div>
                   <h4>終了</h4>
-                  <div class="tweet">
+                  <div class="tweet" ng-switch on="sw">
                     <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                    <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年は{{ ratio*100 | number:4 }}パーセント終了しました。">
+                    <p>
+                      <span ng-if="sw == 0">
+                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の {{ ratio*100 | number:4 }} %25 は終了しました。">
                         <i class="fa fa-twitter fa-2x"></i></a>
+                      </span>
+                      <span ng-if="sw == 1">
+                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の {{ fracNumerator }}/{{ fracDenominator }} は終了しました。">
+                        <i class="fa fa-twitter fa-2x"></i></a>
+                      </span>
                     </p>
                   </div>
                 </div>
