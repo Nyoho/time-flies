@@ -55,46 +55,61 @@
             <div class="col-md-2 col-md-offset-1 col-sm-12 text-center">
               <div class="service-item">
 
+                <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
                     <div ng-cloak>{{ now | date:'yyyy年MM月dd日' }}</div>
                     <div ng-cloak>{{ now | date:'HH:mm:ss.sss' }}</div>
                   </div>
                 </div>
+                </div>
 
                 <h4>現在時刻</h4>
 
               </div>
             </div>
-            <div class="col-md-2 col-sm-6 text-center flip">
-              <div class="service-item">
-                <div class="circle-box" ng-click="flip()">
-                  <div class="cell">
-                    <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
-                    <!-- <div><span class="main-part"><sup>1</sup>&frasl;<sub>10</sub></span></div> -->
+            <div ng-init="sw=0">
+              <div class="col-md-2 col-sm-6 text-center ">
+                <div class="service-item">
+                  <div class="animate-switch-container" ng-click="sw=1-sw" ng-switch on="sw">
+
+                    <div class="circle-box-container">
+                    <div ng-switch-default>
+                      <div class="circle-box">
+                        <div class="cell">
+                          <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
+                        </div>
+                      </div>
+                    </div> <!-- /ng-switch -->
+
+                    <div ng-switch-when="1">
+                      <div class="circle-box">
+                        <div class="cell">
+                          <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ 1 }}</sup>&frasl;<sub>{{ 10 }}</sub></span></div>
+                        </div>
+                      </div>
+                    </div> <!-- /ng-switch -->
+                    </div>
                   </div>
-                </div>
-<div ng-init="items=['a','b','c','d','e','x']">
-  <input placeholder="filter" ng-model="f" />
-  <div ng-repeat="item in items | filter:f" class="repeat-item">
-    {{item}}
-  </div>
-</div>
-                <h4>終了</h4>
-                <div class="tweet">
-                  <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年は{{ ratio*100 | number:4 }}パーセント終了しました。"> 
-                    <i class="fa fa-twitter fa-2x"></i></a></p>
+                  <h4>終了</h4>
+                  <div class="tweet">
+                    <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
+                    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+                    <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年は{{ ratio*100 | number:4 }}パーセント終了しました。">
+                        <i class="fa fa-twitter fa-2x"></i></a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
+                <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
                     <div><span class="main-part" ng-cloak>{{ intRemain }}</span>.<span class="" ng-cloak>{{ decRemain }}</span> %</div>
                   </div>
+                </div>
                 </div>
                 <h4>残り</h4>
                 <div class="tweet">
@@ -107,11 +122,13 @@
             </div>
             <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
+                <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
                     <div ng-cloak>
                       <span class="main-part">{{ oneDay | date:'HH:mm:ss' }}</span>.{{ oneDay | date:'sss' }}</div>
                   </div>
+                </div>
                 </div>
                 <h4>1日なら</h4>
                 <p ng-cloak>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
@@ -119,10 +136,12 @@
             </div>
             <div class="col-md-2 col-sm-6 text-center">
               <div class="service-item">
+                <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
                     <div ng-cloak>{{human}}</div>
                   </div>
+                </div>
                 </div>
                 <h4>人類の歴史なら</h4>
                 <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human" ng-cloak>{{human}}</span>です。</p>

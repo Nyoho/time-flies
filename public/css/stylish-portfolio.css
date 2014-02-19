@@ -157,8 +157,24 @@ i.service-icon {
   text-align: center;
 }
 
-.circle-box {
+.animate-switch-container {
+  position: relative;
   margin: 48px auto 0;
+  width: 140px;
+  height: 140px;
+}
+
+.circle-box-container {
+  position: relative;
+  margin: 48px auto 0;
+  width: 140px;
+  height: 140px;
+}
+
+.circle-box {
+  position: absolute;
+  top: 0;
+  left: 0;
   border: 2px solid #93DBFE;
   border-radius: 50%;
   width: 140px;
@@ -288,15 +304,44 @@ i.scroll:hover {
   opacity: 0;
 }
 .ng-enter.ng-enter-active {
+    -webkit-animation-name: flipin;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+  -webkit-transform: scale(1.0) rotateY(0deg);
+  -webkit-transform-origin: 50% 50%;
+  -webkit-perspective: 200;
+  -webkit-perspective-origin: 50% 50%;
   opacity: 1;
 }
+
+@-webkit-keyframes flipin{
+  0%{-webkit-transform: rotateY(-180deg);}
+  100%{-webkit-transform: rotateY(0deg);}
+}
+
+@-webkit-keyframes flipout{
+  0%{-webkit-transform: rotateY(0deg);}
+  100%{-webkit-transform: rotateY(180deg);}
+}
+ 
 .ng-leave {
-  opacity: 1;
+    -webkit-animation-name: flipout;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-transform: scale(1.0) rotateY(180deg);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-perspective: 200;
+    -webkit-perspective-origin: 50% 50%;
+    opacity: 1;
 }
 .ng-leave.ng-leave-active {
   opacity: 0;
 }
 .ng-move {
+  -webkit-transform: scale(1.0) rotateY(90deg);
+  -webkit-transform-origin: 50% 50%;
+  -webkit-perspective: 200;
+  -webkit-perspective-origin: 50% 50%;
   opacity: .5;
 }
 .ng-move.ng-move-active {
