@@ -26,11 +26,10 @@ function myCtrl($scope, $timeout) {
                      var r = continuousFraction($scope.ratio);
                      $scope.fracDenominator = r.denominator;
                      $scope.fracNumerator = r.numerator;
-                     
                      $scope.infrequentUpdate();
-                 },3000);
+                 },300);
     }
-    $scope.infrequentUpdate()
+    $scope.infrequentUpdate();
 
     function zerofill(x, prec) {
         return ('00000000000000000000000000000000' + x).slice(-prec);
