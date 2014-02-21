@@ -2,6 +2,7 @@
 function myCtrl($scope, $timeout) {
     $scope.Math = window.Math;
     loop();
+    $scope.sw = 0;
 
     function continuousFraction(x) {
         var a = x;
@@ -88,6 +89,16 @@ function myCtrl($scope, $timeout) {
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;
     };
+
+    $scope.$watch(
+        'sw',
+        function (sw, oldsw) {
+            if (sw == 0) {
+                $scope.ratioText = $scope.intRatio + '.' + ($scope.decRatio).slice(0,2) + ' % ';
+            } else {
+                $scope.ratioText = ' ' +  $scope.fracNumerator + '/' + $scope.fracDenominator + ' ';
+            }
+        });
 }
 
 $(function(){

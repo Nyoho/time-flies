@@ -68,7 +68,7 @@
 
               </div>
             </div>
-            <div ng-init="sw=0">
+            <div>
               <div class="col-md-2 col-sm-6 text-center ">
                 <div class="service-item">
                   <div class="animate-switch-container" ng-click="sw=1-sw" ng-switch on="sw">
@@ -96,12 +96,7 @@
                     <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                     <p>
-                      <span ng-if="sw == 0">
-                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の {{ ratio*100 | number:4 }} %25 は終了しました。">
-                        <i class="fa fa-twitter fa-2x"></i></a>
-                      </span>
-                      <span ng-if="sw == 1">
-                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の {{ fracNumerator }}/{{ fracDenominator }} は終了しました。">
+                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の{{ ratioText }}は終了しました。">
                         <i class="fa fa-twitter fa-2x"></i></a>
                       </span>
                     </p>
