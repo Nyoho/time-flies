@@ -316,10 +316,12 @@ i.scroll:hover {
 @-webkit-keyframes flipin{
   0%{
       -webkit-transform: rotateY(-180deg);
+      -webkit-transform-origin: 50% 50% 30px;
       opacity: 0;
     }
   100%{
       -webkit-transform: rotateY(0deg);
+      -webkit-transform-origin: 50% 50% 30px;
       opacity: 1;
   }
 }
@@ -327,11 +329,13 @@ i.scroll:hover {
 @-webkit-keyframes flipout{
   0%{
       -webkit-transform: rotateY(0deg);
+      -webkit-transform-origin: 50% 50% 30px;
       opacity: 1;
   }
-  50%{opacity: 1;}
+  99%{opacity: 0;}
   100%{
-      -webkit-transform: rotateY(180deg);
+      -webkit-transform: rotateY(90deg);
+      -webkit-transform-origin: 50% 50% 30px;
       opacity: 0;
   }
 }
