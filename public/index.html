@@ -67,21 +67,17 @@
                   <div class="animate-switch-container" ng-click="sw=1-sw" ng-switch on="sw">
 
                     <div class="circle-box-container">
-                    <div ng-switch-default>
-                      <div class="circle-box">
+                      <div class="circle-box" ng-switch-default>
                         <div class="cell">
                           <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
                         </div>
                       </div>
-                    </div> <!-- /ng-switch -->
 
-                    <div ng-switch-when="1">
-                      <div class="circle-box">
+                      <div class="circle-box" ng-switch-when="1">
                         <div class="cell">
                           <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ fracNumerator }}</sup>&frasl;<sub>{{ fracDenominator }}</sub></span></div>
                         </div>
                       </div>
-                    </div> <!-- /ng-switch -->
                     </div>
                   </div>
                   <h4>終了</h4>
