@@ -291,24 +291,6 @@ i.scroll:hover {
 }
 
 
-.flip.animate-enter {
-	-webkit-transition: 1s linear all; /* Chrome */
-	transition: 1s linear all;
-	opacity: 0;
-}
- 
-.flip.animate-enter.flip.animate-enter-active {
-	opacity: 1;
-}
-.ng-enter,
-.ng-leave,
-.ng-move {
-  -webkit-transition: opacity 0.3s linear;
-  transition: opacity 0.3s linear;
-}
-.flip.ng-enter {
-  opacity: 0;
-}
 .circle-box.ng-leave,
 .circle-box.ng-enter.ng-enter-active {
     -webkit-animation-name: flipin;
@@ -317,13 +299,14 @@ i.scroll:hover {
     -webkit-transform-origin: 50% 50%;
     -webkit-perspective: 200;
     -webkit-perspective-origin: 50% 50%;
+    opacity: 0;
 }
 
-@-webkit-keyframes flipin{
+@-webkit-keyframes flipin {
   0%{
+      opacity: 0;
       -webkit-transform: rotateY(-180deg);
       -webkit-transform-origin: 50% 50% 30px;
-      opacity: 0;
     }
   100%{
       -webkit-transform: rotateY(0deg);
@@ -332,7 +315,7 @@ i.scroll:hover {
   }
 }
 
-@-webkit-keyframes flipout{
+@-webkit-keyframes flipout {
   0%{
       -webkit-transform: rotateY(0deg);
       -webkit-transform-origin: 50% 50% 30px;
