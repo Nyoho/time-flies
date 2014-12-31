@@ -26,9 +26,9 @@ function myCtrl($scope, $timeout) {
                      var r = continuousFraction($scope.ratio);
                      $scope.fracDenominator = r.denominator;
                      $scope.fracNumerator = r.numerator;
-                       changeRatioText($scope.sw)
+                     changeRatioText($scope.sw);
                      $scope.infrequentUpdate();
-                 },300);
+                 },15);
     }
     $scope.infrequentUpdate();
 
