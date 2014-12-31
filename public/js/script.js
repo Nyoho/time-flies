@@ -98,7 +98,7 @@ function myCtrl($scope, $timeout) {
 
     function changeRatioText (sw) {
         if (sw == 0) {
-            $scope.ratioText = $scope.intRatio + '.' + ($scope.decRatio).slice(0,2) + ' % ';
+            $scope.ratioText = $scope.intRatio + '.' + ($scope.decRatio).slice(0,2) + ' %25 ';
         } else {
             $scope.ratioText = ' ' +  $scope.fracNumerator + '/' + $scope.fracDenominator + ' ';
         }
