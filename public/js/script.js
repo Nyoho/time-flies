@@ -26,6 +26,7 @@ function myCtrl($scope, $timeout) {
                      var r = continuousFraction($scope.ratio);
                      $scope.fracDenominator = r.denominator;
                      $scope.fracNumerator = r.numerator;
+                       changeRatioText($scope.sw)
                      $scope.infrequentUpdate();
                  },300);
     }
@@ -92,12 +93,16 @@ function myCtrl($scope, $timeout) {
     $scope.$watch(
         'sw',
         function (sw, oldsw) {
-            if (sw == 0) {
-                $scope.ratioText = $scope.intRatio + '.' + ($scope.decRatio).slice(0,2) + ' % ';
-            } else {
-                $scope.ratioText = ' ' +  $scope.fracNumerator + '/' + $scope.fracDenominator + ' ';
-            }
+          changeRatioText(sw);
         });
+
+    function changeRatioText (sw) {
+        if (sw == 0) {
+            $scope.ratioText = $scope.intRatio + '.' + ($scope.decRatio).slice(0,2) + ' % ';
+        } else {
+            $scope.ratioText = ' ' +  $scope.fracNumerator + '/' + $scope.fracDenominator + ' ';
+        }
+    }
 }
 
 window.requestAnimationFrame = (function(){
