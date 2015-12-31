@@ -74,7 +74,7 @@ function myCtrl($scope, $timeout) {
         $scope.oneDay = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
         calcDecimals();
         
-        var d = 2013 + 200000.0*(r-1.0);
+        var d = now.getFullYear() + 200000.0*(r-1.0);
         $scope.humanYear = Math.abs(d);
         if (d >= 0) {
             $scope.human = "西暦 " + parseInt(d) + " 年"
