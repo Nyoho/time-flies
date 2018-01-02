@@ -9,24 +9,26 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'power-assert', 'commonjs'],
 
-      
     // list of files / patterns to load in the browser
     files: [
-      // 'public/js/*.js',
-      'test/*.js'
+      'public/js/*.js',
+      'test/*.js',
     ],
 
 
     // list of files / patterns to exclude
     exclude: [
+      'public/js/fraction.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'test/**/*.js': ['babel', 'commonjs'],
+      'public/js/*.js': ['babel', 'commonjs']
     },
 
 
@@ -42,7 +44,7 @@ module.exports = function(config) {
         opts: 'test/mocha.opts'
       }
     },
-    
+
 
     // web server port
     port: 9876,
