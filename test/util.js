@@ -1,4 +1,4 @@
-import assert from 'power-assert';
+// import assert from 'power-assert';
 import { foo } from "../public/js/util";
 
 describe('Foo', function () {
