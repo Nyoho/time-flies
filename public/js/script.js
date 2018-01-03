@@ -115,3 +115,11 @@ window.requestAnimationFrame = (function(){
                                             window.setTimeout(callback, 1000 / 60);
                                         };
                                 })();
+
+// export { myCtrl }
+
+const bar = (a) => {
+  return a+1
+}
+
+module.exports = bar
