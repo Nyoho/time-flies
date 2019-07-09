@@ -33,6 +33,7 @@ function myCtrl($scope, $timeout) {
     $scope.infrequentUpdate();
 
     function zerofill(x, prec) {
+        return String(x).padStart(2, "0");
         return ('00000000000000000000000000000000' + x).slice(-prec);
     }
 
