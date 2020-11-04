@@ -10,7 +10,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'public/js'),
-    publicPath: '/',
+    publicPath: '/js/',
     filename: 'bundle.js',
   },
   module: {
@@ -33,4 +33,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    // open: true,
+    // openPage: "index.html",
+    contentBase: path.join(__dirname, 'public'),
+    watchContentBase: true,
+    port: 3000,
+  }
 }
