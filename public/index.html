@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app="MyApp">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,12 +36,12 @@
     <!-- /Side Menu -->
   
     <a name="top"></a>
-    <div id="services" class="services" ng-controller="myCtrl">
+    <div id="services" class="services">
       <div class="vert-text">
         <div class="container">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
-              <h1 ng-cloak>{{ now | date:'yyyy' }}</h1>
+              <h1>{{ now | date:'yyyy' }}</h1>
               <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
               <!-- <a href="#services" class="btn  btn-lg">Take a look</a> -->
             </div>
@@ -56,8 +56,8 @@
                 <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
-                    <div ng-cloak>{{ now | date:'yyyy年MM月dd日' }}</div>
-                    <div ng-cloak>{{ now | date:'HH:mm:ss.sss' }}</div>
+                    <div>{{ now | date:'yyyy年MM月dd日' }}</div>
+                    <div>{{ now | date:'HH:mm:ss.sss' }}</div>
                   </div>
                 </div>
                 </div>
@@ -74,13 +74,13 @@
                     <div class="circle-box-container">
                       <div class="circle-box" ng-switch-default>
                         <div class="cell">
-                          <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
+                          <div><span class="main-part">{{ intRatio }}</span>.<span class="">{{ decRatio }}</span> %</div>
                         </div>
                       </div>
 
                       <div class="circle-box" ng-switch-when="1">
                         <div class="cell">
-                          <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ fracNumerator }}</sup>&frasl;<sub>{{ fracDenominator }}</sub></span></div>
+                          <div><span class="main-part" style="font-size:48px;"><sup>{{ fracNumerator }}</sup>&frasl;<sub>{{ fracDenominator }}</sub></span></div>
                         </div>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
-                    <div><span class="main-part" ng-cloak>{{ intRemain }}</span>.<span class="" ng-cloak>{{ decRemain }}</span> %</div>
+                    <div><span class="main-part">{{ intRemain }}</span>.<span class="">{{ decRemain }}</span> %</div>
                   </div>
                 </div>
                 </div>
@@ -121,13 +121,13 @@
                 <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
-                    <div ng-cloak>
+                    <div>
                       <span class="main-part">{{ oneDay | date:'HH:mm:ss' }}</span>.{{ oneDay | date:'sss' }}</div>
                   </div>
                 </div>
                 </div>
                 <h4>1日なら</h4>
-                <p ng-cloak>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
+                <p>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
                 <div class="tweet">
                   <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
@@ -141,12 +141,12 @@
                 <div class="circle-box-container">
                 <div class="circle-box">
                   <div class="cell">
-                    <div ng-cloak>{{human}}</div>
+                    <div>{{human}}</div>
                   </div>
                 </div>
                 </div>
                 <h4>人類の歴史なら</h4>
-                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human" ng-cloak>{{human}}</span>です。</p>
+                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{{human}}</span>です。</p>
                 <div class="tweet">
                   <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
