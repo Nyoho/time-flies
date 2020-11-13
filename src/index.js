@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Time } from './components/time.js'
+import TimeFlies from './components/time-flies'
 // import Lorem from './components/lorem.js'
 
 const Main = () => {
@@ -26,25 +27,7 @@ const Main = () => {
     return () => cancelAnimationFrame(requestRef.current);
   }, []);
   
-  return <>
-           <div id="services" className="services">
-             <div className='vert-text'>
-               <div className='container'>
-                 <div className='row'>
-                   <div className='col-md-6 col-md-offset-3 col-sm-12 text-center'>
-                     <h1>{time.year}</h1>
-                     <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
-                   </div>
-                 </div>
-
-                 <div className='row'>
-                   <div id="bar-graph"></div>
-                 </div>
-
-               </div>
-             </div>
-           </div>
-         </>
+  return (<TimeFlies time={time}/>)
 }
 
 ReactDOM.render(<Main />, document.getElementById('root'))
