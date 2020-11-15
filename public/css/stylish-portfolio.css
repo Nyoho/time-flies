@@ -136,7 +136,7 @@ body {
     color: #93DBFE;
 }
 
-.services {
+#root, .services {
   display: table;
   height: 100%;
   width: 100%;
