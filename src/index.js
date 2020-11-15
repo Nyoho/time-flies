@@ -5,7 +5,7 @@ import TimeFlies from './components/time-flies'
 // import Lorem from './components/lorem.js'
 
 const Main = () => {
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState(new Time(new Date()))
   
   const requestRef = useRef();
   const previousTimeRef = useRef();
