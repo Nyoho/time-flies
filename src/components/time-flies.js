@@ -2,7 +2,7 @@ import React from 'react'
 
 const TimeFlies = props => {
   const time = props.time;
-  
+
   return <>
            <div id="services" className="services">
              <div className='vert-text'>
@@ -26,8 +26,8 @@ const TimeFlies = props => {
                        <div className="circle-box-container">
                          <div className="circle-box">
                            <div className="cell">
-                             <div> 'now | date:yyyy年MM月dd日' </div>
-                             <div> 'now | date:HH:mm:ss.sss' </div>
+                             <div>{time.getDateString()}</div>
+                             <div>{time.getTimeString()}</div>
                            </div>
                          </div>
 
