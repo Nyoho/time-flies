@@ -13,10 +13,10 @@ const Time = class {
         
     const d = this.year + 200000.0*(this.ratio-1.0);
     this.humanYear = Math.abs(d);
-    if (this.human >= 0) {
-            this.humanString = "西暦 " + parseInt(d) + " 年"
+    if (d >= 0) {
+            this.humanString = "西暦 " + Math.ceil(d) + " 年"
         } else {
-            this.humanString = "紀元前 " + parseInt(-d) + " 年"
+            this.humanString = "紀元前 " + Math.ceil(-d) + " 年"
         }
 
     this.getDateString = () => {
