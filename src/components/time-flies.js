@@ -1,4 +1,5 @@
 import React from 'react'
+import { Time } from 'components/time'
 
 const TimeFlies = props => {
   const time = props.time;
@@ -26,8 +27,8 @@ const TimeFlies = props => {
                        <div className="circle-box-container">
                          <div className="circle-box">
                            <div className="cell">
-                             <div>{time.getDateString()}</div>
-                             <div>{time.getTimeString()}</div>
+                             <div>{Time.getDateString(time.date)}</div>
+                             <div>{Time.getTimeString(time.date)}</div>
                            </div>
                          </div>
 
