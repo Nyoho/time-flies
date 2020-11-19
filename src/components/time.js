@@ -27,12 +27,12 @@ const Time = class {
     return `${y}年${m}月${d}日`;
   }
 
-  static getTimeString(dt) {
+  static getTimeString(dt, lang = 'en') {
     const h = dt.getHours();
     const m = ("00" + dt.getMinutes()).slice(-2);
     const s = ("00" + dt.getSeconds()).slice(-2);
     const ss = ("000" + dt.getMilliseconds()).slice(-3);
-    return `${h}:${m}:${s}.${ss}`;
+    return lang == 'ja' ? `${h}時${m}分${s}.${ss}秒` : `${h}:${m}:${s}.${ss}`;
   }
 }
 
