@@ -97,12 +97,15 @@ const TimeFlies = props => {
                          <div className="circle-box">
                            <div className="cell">
                              <div>
-                               <span className="main-part"> 'oneDay | date:HH:mm:ss' </span>. 'oneDay | date:sss' </div>
+                               <span className="main-part">
+                                 {Time.getTimeString(time.oneDay)}
+                               </span>
+                             </div>
                            </div>
                          </div>
                        </div>
                        <h4>1日なら</h4>
-                       <p>今年1年を1日24時間にたとえると、現在 'oneDay | date:HH時mm分ss秒' です。</p>
+                       <p>今年1年を1日24時間にたとえると、現在{Time.getTimeString(time.oneDay, 'ja')}です。</p>
                        <div className="tweet">
                          <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
                          <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
