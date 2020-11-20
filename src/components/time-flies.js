@@ -46,7 +46,7 @@ const TimeFlies = props => {
                            <div className="circle-box-container">
                              <div className="circle-box" ngswitch='default'>
                                <div className="cell">
-                                 <div><span className="main-part"> 'intRatio' </span>.<span className=""> 'decRatio' </span> %</div>
+                                 <div><span className="main-part">{time.ratio * 100}</span>.<span className=""></span> %</div>
                                </div>
                              </div>
 
