@@ -76,7 +76,7 @@ const TimeFlies = props => {
                        <div className="circle-box-container">
                          <div className="circle-box">
                            <div className="cell">
-                             <div><span className="main-part">  'intRemain' </span>.<span className=""> 'decRemain' </span> %</div>
+                             <div><span className="main-part">{time.remain * 100}</span>.<span className=""> 'decRemain' </span> %</div>
                            </div>
                          </div>
                        </div>
