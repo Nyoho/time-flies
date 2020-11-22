@@ -46,7 +46,7 @@ const TimeFlies = props => {
                            <div className="circle-box-container">
                              <div className="circle-box" ngswitch='default'>
                                <div className="cell">
-                                 <div><span className="main-part">{time.ratio * 100}</span>.<span className=""></span> %</div>
+                                 <div><span className="main-part">{Math.floor(time.ratio * 100)}</span>.<span className="">{String(Math.floor((time.ratio * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
                                </div>
                              </div>
 
@@ -76,7 +76,7 @@ const TimeFlies = props => {
                        <div className="circle-box-container">
                          <div className="circle-box">
                            <div className="cell">
-                             <div><span className="main-part">{time.remain * 100}</span>.<span className=""> 'decRemain' </span> %</div>
+                             <div><span className="main-part">{Math.floor(time.remain * 100)}</span>.<span className="">{String(Math.floor((time.remain * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
                            </div>
                          </div>
                        </div>
