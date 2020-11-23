@@ -52,7 +52,7 @@ const TimeFlies = props => {
 
                              <div className="circle-box" ngswitchwhen="1">
                                <div className="cell">
-                                 <div><span className="main-part" style={{fontSize: '48px'}}><sup> 'fracNumerator' </sup>&frasl;<sub> 'fracDenominator' </sub></span></div>
+                                 <div><span className="main-part" style={{fontSize: '48px'}}><sup>{time.fraction.numerator}</sup>&frasl;<sub>{time.fraction.denominator}</sub></span></div>
                                </div>
                              </div>
                            </div>
