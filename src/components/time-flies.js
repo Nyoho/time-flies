@@ -59,7 +59,7 @@ const TimeFlies = props => {
                          </div>
                          <h4>終了</h4>
                          <div className="tweet" ngswitchon="sw">
-                           <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
+                           <a href="https://twitter.com/NeXTSTEP2OSX/"></a>
                            <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                            <p>
                              <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の 'ratioText' は終了しました。">
