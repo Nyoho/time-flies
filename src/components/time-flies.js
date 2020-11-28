@@ -131,7 +131,7 @@ const TimeFlies = props => {
                        <div className="tweet">
                          <a href="https://twitter.com/NeXTSTEP2OSX/"></a>
                          <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                         <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在 {time.humanString} です。"> 
+                         <p><a href={`https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}> 
                      <i className="fa fa-twitter fa-2x"></i></a></p>
                        </div>
                      </div>
