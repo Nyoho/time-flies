@@ -291,38 +291,22 @@ i.scroll:hover {
 }
 
 
-.circle-box.ng-leave,
-.circle-box.ng-enter.ng-enter-active {
-    -webkit-transform: rotateY(0deg);
-    -webkit-transform-origin: 50% 50% 30px;
-    -webkit-perspective: 200;
-    -webkit-perspective-origin: 50% 50%;
-    opacity: 1;
+.circle-box.ng-leave {
+    transform: rotateY(0deg);
+    transform-origin: 50% 50% 70px;
+    perspective: 200;
+    perspective-origin: 50% 50%;
 }
  
-.circle-box.ng-enter,
-.circle-box.ng-leave.ng-leave-active {
-    -webkit-transform: scale(1.0) rotateY(120deg);
-    -webkit-transform-origin: 50% 50% 30px;
-    -webkit-perspective: 200;
-    -webkit-perspective-origin: 50% 50%;
+.circle-box.ng-enter {
+    transform: rotateY(-90deg);
+    transform-origin: 50% 50% 70px;
+    perspective: 200;
+    perspective-origin: 50% 50%;
     opacity: 0;
-}
-.ng-move {
-}
-.ng-move.ng-move-active {
 }
 
 .circle-box.ng-enter,
 .circle-box.ng-leave {
-    -webkit-transition: 0.5s ease-in-out all;
     transition: 0.5s ease-in-out all;
-    opacity: 0;
-}
-.circle-box.ng-enter {
-   -webkit-transform: rotateY(-120deg);
-    opacity: 0;
-}
-.circle-box.ng-leave {
-    -webkit-transform: scale(1.0) rotateY(0deg);
 }
