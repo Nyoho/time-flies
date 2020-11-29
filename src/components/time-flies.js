@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Time } from 'components/time'
 
 const TimeFlies = props => {
+  const [flipped, setFlipped] = useState(false);
   const time = props.time;
 
   return <>
@@ -41,21 +42,22 @@ const TimeFlies = props => {
                    <div>
                      <div className="col-md-2 col-sm-6 text-center ">
                        <div className="service-item">
-                         <div className="animate-switch-container" ngclick="sw=1-sw" ngswitchon="sw">
+                         <div className="animate-switch-container" onClick={() => setFlipped(!flipped)}>
 
                            <div className="circle-box-container">
-                             <div className="circle-box" ngswitch='default'>
+                             <div className={'circle-box ' + (flipped ? 'ng-enter' : 'ng-leave')}>
                                <div className="cell">
                                  <div><span className="main-part">{Math.floor(time.ratio * 100)}</span>.<span className="">{String(Math.floor((time.ratio * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
                                </div>
                              </div>
 
-                             <div className="circle-box" ngswitchwhen="1">
+                             <div className={'circle-box ' + (flipped ? 'ng-leave' : 'ng-enter')}>
                                <div className="cell">
                                  <div><span className="main-part" style={{fontSize: '48px'}}><sup>{time.fraction.numerator}</sup>&frasl;<sub>{time.fraction.denominator}</sub></span></div>
                                </div>
                              </div>
                            </div>
+
                          </div>
                          <h4>終了</h4>
                          <div className="tweet" ngswitchon="sw">
