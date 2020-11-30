@@ -64,7 +64,7 @@ const TimeFlies = props => {
                            <a href="https://twitter.com/NeXTSTEP2OSX/"></a>
                            <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                            <p>
-                             <a href={`https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の ${time.ratio*100} %25 は終了しました。`}>
+                             <a href={`https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の ${!flipped ? time.ratio*100 + '%25' : `${time.fraction.numerator}/${time.fraction.denominator}`} は終了しました。`}>
                                <i className="fa fa-twitter fa-2x"></i>
                              </a>
                            </p>
