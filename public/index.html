@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app="MyApp">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,143 +23,8 @@
 
   <body>
 
-    <!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="http://nyoho.jp">Nyoho.jp</a></li>
-        <li><a href="#top">トップへ</a></li>
-        <li><a href="#contact">コンタクト</a></li>
-      </ul>
-    </div>
-    <!-- /Side Menu -->
-  
     <a name="top"></a>
-    <div id="services" class="services" ng-controller="myCtrl">
-      <div class="vert-text">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
-              <h1 ng-cloak>{{ now | date:'yyyy' }}</h1>
-              <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
-              <!-- <a href="#services" class="btn  btn-lg">Take a look</a> -->
-            </div>
-          </div>
-          <div class="row">
-            <div id="bar-graph"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-2 col-md-offset-1 col-sm-12 text-center">
-              <div class="service-item">
-
-                <div class="circle-box-container">
-                <div class="circle-box">
-                  <div class="cell">
-                    <div ng-cloak>{{ now | date:'yyyy年MM月dd日' }}</div>
-                    <div ng-cloak>{{ now | date:'HH:mm:ss.sss' }}</div>
-                  </div>
-                </div>
-                </div>
-
-                <h4>現在時刻</h4>
-
-              </div>
-            </div>
-            <div>
-              <div class="col-md-2 col-sm-6 text-center ">
-                <div class="service-item">
-                  <div class="animate-switch-container" ng-click="sw=1-sw" ng-switch on="sw">
-
-                    <div class="circle-box-container">
-                      <div class="circle-box" ng-switch-default>
-                        <div class="cell">
-                          <div><span class="main-part" ng-cloak>{{ intRatio }}</span>.<span class="" ng-cloak>{{ decRatio }}</span> %</div>
-                        </div>
-                      </div>
-
-                      <div class="circle-box" ng-switch-when="1">
-                        <div class="cell">
-                          <div><span class="main-part" style="font-size:48px;" ng-cloak><sup>{{ fracNumerator }}</sup>&frasl;<sub>{{ fracDenominator }}</sub></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <h4>終了</h4>
-                  <div class="tweet" ng-switch on="sw">
-                    <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
-                    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                    <p>
-                      <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の{{ ratioText }}は終了しました。">
-                        <i class="fa fa-twitter fa-2x"></i></a>
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-6 text-center">
-              <div class="service-item">
-                <div class="circle-box-container">
-                <div class="circle-box">
-                  <div class="cell">
-                    <div><span class="main-part" ng-cloak>{{ intRemain }}</span>.<span class="" ng-cloak>{{ decRemain }}</span> %</div>
-                  </div>
-                </div>
-                </div>
-                <h4>残り</h4>
-                <div class="tweet">
-                  <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年も残すところあと {{ remain*100 | number:4 }} パーセントです。"> 
-                    <i class="fa fa-twitter fa-2x"></i></a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-6 text-center">
-              <div class="service-item">
-                <div class="circle-box-container">
-                <div class="circle-box">
-                  <div class="cell">
-                    <div ng-cloak>
-                      <span class="main-part">{{ oneDay | date:'HH:mm:ss' }}</span>.{{ oneDay | date:'sss' }}</div>
-                  </div>
-                </div>
-                </div>
-                <h4>1日なら</h4>
-                <p ng-cloak>今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。</p>
-                <div class="tweet">
-                  <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年1年を1日24時間にたとえると、現在{{ oneDay | date:'HH時mm分ss秒' }}です。"> 
-                    <i class="fa fa-twitter fa-2x"></i></a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-6 text-center">
-              <div class="service-item">
-                <div class="circle-box-container">
-                <div class="circle-box">
-                  <div class="cell">
-                    <div ng-cloak>{{human}}</div>
-                  </div>
-                </div>
-                </div>
-                <h4>人類の歴史なら</h4>
-                <p>今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human" ng-cloak>{{human}}</span>です。</p>
-                <div class="tweet">
-                  <a href="http://twitter.com/NeXTSTEP2OSX/"></a>
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在 {{human}} です。"> 
-                    <i class="fa fa-twitter fa-2x"></i></a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Services -->
+    <div id="root"></div>
 
     <!-- Intro -->
     <div id="about" class="intro">
@@ -209,12 +74,9 @@
               <li><a href="http://twitter.com/NeXTSTEP2OSX/"><i class="fa fa-twitter fa-3x"></i></a></li>
               <li><a href="http://facebook.com/Nyoho"><i class="fa fa-facebook fa-3x"></i></a></li>
             </ul>
-            <div class="top-scroll">
-              <a href="#top"><i class="fa fa-arrow-circle-up scroll fa-4x"></i></a>
-            </div>
             <hr>
             <p>
-              Copyright &copy; <a href="http://nyoho.jp">Nyoho</a> 2013-2014.
+              Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2020.
               テンプレートは <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。
               Photo by <a href="http://www.flickr.com/photos/aussiegall/5142802726/">aussiegall Louise Docker</a>
             </p>
@@ -224,50 +86,6 @@
     </footer>
     <!-- /Footer -->
 
-    <!-- JavaScript -->
-    <!-- <script src="js/jquery-1.10.2.js"></script>
-     !-- <script src="js/bootstrap.js"></script> -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular-animate.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      var myApp = angular.module('MyApp', ['ngAnimate']);
-    </script>
-    <script src="js/fraction.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-        $("#menu-close").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-      $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-            || location.hostname == this.hostname) {
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-              $('html,body').animate({
-                scrollTop: target.offset().top
-              }, 1000);
-              return false;
-            }
-          }
-        });
-      });
-    </script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -279,6 +97,8 @@
       ga('send', 'pageview');
       
     </script>
+
+    <script src="js/bundle.js"></script>
   </body>
 
 </html>
