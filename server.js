@@ -17,8 +17,9 @@ app.use(morgan('dev'));
 app.use(compression({ filter: shouldCompress }));
 app.use(express.static(__dirname + '/public'));
 
-app.listen(app.get('port'), function() {
-  console.log('Server listening on port %s', app.get('port'));
+app.listen(app.get('port'), err => {
+  if (err) throw err
+  console.log('Server on http://localhost:%s', app.get('port'))
 });
 
 function shouldCompress (req, res) {

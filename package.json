@@ -3,22 +3,41 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "babel-preset-power-assert": "^3.0.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "karma-commonjs": "^1.0.0",
-    "mocha-reporter": "^0.1.1",
-    "morgan": "^1.9.1",
-    "power-assert": "^1.6.1"
+    "mini-css-extract-plugin": "^0.9.0",
+    "morgan": "^1.9.1"
   },
   "scripts": {
+    "start": "node server.js",
+    "dev": "webpack-dev-server --mode development --hot",
+    "build": "NODE_ENV=production webpack --mode production",
+    "build:size": "NODE_ENV=production webpack --json | webpack-bundle-size-analyzer",
+    "lint": "eslint src",
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "jest-cli": "^24.9.0"
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "jest-cli": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-hot-loader": "^4.12.18",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "jest": {
     "testURL": "http://localhost/"

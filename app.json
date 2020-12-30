@@ -17,5 +17,5 @@
   "name": "time-flies",
   "scripts": {
   },
-  "stack": "cedar-14"
+  "stack": "heroku-18"
 }
