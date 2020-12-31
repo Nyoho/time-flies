@@ -42,49 +42,79 @@ function myCtrl($scope, $timeout) {
         calc();
     }
 
-    function calcDecimals() {
-        var a = (($scope.ratio * 100) + '').split('.');
-        if (a.length < 2) {
-            $scope.intRatio = a[0];
-            $scope.decRatio = '0000000';
-        } else {
-            $scope.intRatio = a[0];
-            $scope.decRatio = a[1].slice(0,7);
-        }
-
-        a = (($scope.remain * 100) + '').split('.');
-        if (a.length < 2) {
-            $scope.intRemain = a[0];
-            $scope.decRemain = '0000000';
-        } else {
-            $scope.intRemain = a[0];
-            $scope.decRemain = a[1].slice(0,7);
-        }
-    }
-
     function calc() {
-        $scope.now = new Date();
-        var now = $scope.now;
-        var nextNewYear = new Date(now.getFullYear()+1,0,1);
-        var thisNewYear = new Date(now.getFullYear(),0,1);
-        
-        $scope.ratio = (now - thisNewYear) / (nextNewYear - thisNewYear);
-        $scope.remain = 1 - $scope.ratio;
 
-        var r = $scope.ratio;
-        $scope.oneDay = new Date(1000*(thisNewYear/1000 + 24*60*60*r))
-        calcDecimals();
-        
-        var d = now.getFullYear() + 200000.0*(r-1.0);
-        $scope.humanYear = Math.abs(d);
-        if (d >= 0) {
-            $scope.human = "西暦 " + parseInt(d) + " 年"
-        } else {
-            $scope.human = "紀元前 " + parseInt(-d) + " 年"
-        }
+        var now = new Date();
 
+        // 計算   
+        var hoge = getHoge(now)
+    
+        // 表示用の構造体に計算結果を代入
+        $scope.now = now
+        $scope.ratio = hoge.ratio
+        $scope.remain = 1 - hoge.ratio
+        $scope.oneDay = hoge.oneDay
+        $scope.human = hoge.human
+
+        var ratio = getFormattedDecimals($scope.ratio, 7);        // 終了[%] 表示用文字列生成
+        $scope.intRatio = ratio.IntPart;
+        $scope.decRatio = ratio.DecPart;        
+
+        var remain = getFormattedDecimals($scope.remain, 7);      // 残り[%] 表示用文字列生成
+        $scope.intRemain = remain.IntPart;
+        $scope.decRemain = remain.DecPart;        
+
+        // 表示    
         $scope.$apply();
     }
+
+
+    function getHoge(now) {
+    
+        // 戻り値
+        var ret = {};
+    
+        // 始点と終点
+        var nextNewYear = new Date(now.getFullYear() + 1, 0, 1);
+        var thisNewYear = new Date(now.getFullYear(),     0, 1);
+    
+        // 終了[%] の算出
+        var ratio = (now - thisNewYear.valueOf()) / (nextNewYear.valueOf() - thisNewYear.valueOf());
+        ret.ratio = ratio;
+    
+        // 終了[%] を一日に換算
+        var oneDaySecond = 24 * 60 * 60 * ratio;     // 一年=一日の時の経過秒数
+        var timespanBase = new Date(1970, 1, 1);     // timespan型がないので、1970/1/1 0:0:0 を起点にする
+        ret.oneDay = new Date(timespanBase.valueOf() + oneDaySecond * 1000);
+    
+        // 終了[%] を人類の歴史に換算
+        var d = (nextNewYear.getFullYear() + 200000.0) * ratio - 200000.0; // 20万年前～現在の経過年数
+        var y = Math.floor(d);
+        if (y >= 1) {
+            ret.human = "西暦 " + y + " 年";
+        } else {
+            ret.human = "紀元前 " + (Math.abs(y) + 1) + " 年";
+        }
+        
+        return ret;
+    }
+
+    function getFormattedDecimals(value, scale) {
+        
+        // 戻り値
+        var ret = {};
+
+        // 整数部
+        ret.IntPart = Math.floor(value).toString();
+
+        // 小数部                
+        var s = Math.pow(10, scale)
+        var d = Math.floor((value % 1) * s)
+        ret.DecPart = (s + d).toString().substr(-scale)
+    
+        return ret;
+    }
+
 
     $scope.tweet = function (){
         $scope.$broadcast('timer-start');
