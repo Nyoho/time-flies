@@ -17,10 +17,12 @@ app.use(morgan('dev'));
 app.use(compression({ filter: shouldCompress }));
 app.use(express.static(__dirname + '/public'));
 
-app.listen(app.get('port'), err => {
+if (!module.parent) {
+const server = app.listen(app.get('port'), err => {
   if (err) throw err
   console.log('Server on http://localhost:%s', app.get('port'))
 });
+}
 
 function shouldCompress (req, res) {
   if (req.headers['x-no-compression']) {
