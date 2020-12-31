@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
+  - "12"
 deploy:
   provider: heroku
   api_key:
