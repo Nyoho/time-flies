@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Time } from 'components/time'
+import Ratio from 'components/ratio'
 
 const TimeFlies = props => {
   const [flipped, setFlipped] = useState(false);
@@ -27,9 +28,9 @@ const TimeFlies = props => {
 
                        <div className="circle-box-container">
                          <div className="circle-box">
-                           <div className="cell">
-                             <div>{Time.getDateString(time.date)}</div>
-                             <div>{Time.getTimeString(time.date)}</div>
+                           <div className="cell" onClick={() => ''}>
+                             {Time.getDateString(time.date)}<br/>
+                             {Time.getTimeString(time.date)}
                            </div>
                          </div>
 
@@ -38,40 +39,7 @@ const TimeFlies = props => {
                      </div>
                    </div>
 
-
-                   <div>
-                     <div className="col-md-2 col-sm-6 text-center ">
-                       <div className="service-item">
-                         <div className="animate-switch-container" onClick={() => setFlipped(!flipped)}>
-
-                           <div className="circle-box-container">
-                             <div className={'circle-box ' + (flipped ? 'ng-enter' : 'ng-leave')}>
-                               <div className="cell">
-                                 <div><span className="main-part">{Math.floor(time.ratio * 100)}</span>.<span className="">{String(Math.floor((time.ratio * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
-                               </div>
-                             </div>
-
-                             <div className={'circle-box ' + (flipped ? 'ng-leave' : 'ng-enter')}>
-                               <div className="cell">
-                                 <div><span className="main-part" style={{fontSize: '48px'}}><sup>{time.fraction.numerator}</sup>&frasl;<sub>{time.fraction.denominator}</sub></span></div>
-                               </div>
-                             </div>
-                           </div>
-
-                         </div>
-                         <h4>終了</h4>
-                         <div className="tweet" ngswitchon="sw">
-                           <a href="https://twitter.com/NeXTSTEP2OSX/"></a>
-                           <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                           <p>
-                             <a href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Ftime-flies.herokuapp.com&hashtags=TimeFlies&text=今年の ${!flipped ? time.ratio*100 + '%25' : `${time.fraction.numerator}/${time.fraction.denominator}`} は終了しました。`}>
-                               <i className="fa fa-twitter fa-2x"></i>
-                             </a>
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                   </div>
+                   <Ratio time={time}/>
 
                    <div className="col-md-2 col-sm-6 text-center">
                      <div className="service-item">
