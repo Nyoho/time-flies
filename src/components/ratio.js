@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 //import continuousFraction from './continuous-fraction'
 var Fraction = require('./fraction').Fraction
 var continuousFraction = require('./continuous-fraction').continuousFraction
@@ -16,17 +17,21 @@ const Remain = props => {
                <div className="animate-switch-container" onClick={() => setFlipped(!flipped)}>
 
                  <div className="circle-box-container">
-                   <div className={'circle-box ' + (flipped ? 'ng-enter' : 'ng-leave')}>
-                     <div className="cell">
-                       <div><span className="main-part">{Math.floor(time.ratio * 100)}</span>.<span className="">{String(Math.floor((time.ratio * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
+                   <CSSTransition in={!flipped} timeout={500} classNames="flip" unmountOnExit>
+                     <div className='circle-box'>
+                       <div className="cell">
+                         <div><span className="main-part">{Math.floor(time.ratio * 100)}</span>.<span className="">{String(Math.floor((time.ratio * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
+                       </div>
                      </div>
-                   </div>
+                   </CSSTransition>
 
-                   <div className={'circle-box ' + (flipped ? 'ng-leave' : 'ng-enter')}>
-                     <div className="cell">
-                       <div><span className="main-part" style={{fontSize: '48px'}}><sup>{frac.numerator}</sup>&frasl;<sub>{frac.denominator}</sub></span></div>
+                   <CSSTransition in={flipped} timeout={500} classNames="flip" unmountOnExit>
+                     <div className='circle-box'>
+                       <div className="cell">
+                         <div><span className="main-part" style={{fontSize: '48px'}}><sup>{frac.numerator}</sup>&frasl;<sub>{frac.denominator}</sub></span></div>
+                       </div>
                      </div>
-                   </div>
+                   </CSSTransition>
                  </div>
 
                </div>
