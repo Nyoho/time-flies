@@ -291,22 +291,34 @@ i.scroll:hover {
 }
 
 
-.circle-box.ng-leave {
-    transform: rotateY(0deg);
+.flip-enter {
+    opacity: 0;
+    transform: rotateY(-90deg) rotate(-10deg);
+}
+
+.flip-enter-active {
+    transform: rotateY(0);
     transform-origin: 50% 50% 70px;
+    transition: 0.5s ease-in-out all;
     perspective: 200;
     perspective-origin: 50% 50%;
+    opacity: 1;
 }
- 
-.circle-box.ng-enter {
-    transform: rotateY(-90deg);
+
+
+.flip-exit {
+    opacity: 1;
+}
+
+.flip-exit-active {
+    transform: rotateY(90deg) rotateZ(45deg);
     transform-origin: 50% 50% 70px;
+    transition: 0.5s ease-in-out all;
     perspective: 200;
     perspective-origin: 50% 50%;
     opacity: 0;
 }
 
-.circle-box.ng-enter,
-.circle-box.ng-leave {
-    transition: 0.5s ease-in-out all;
+.flip-exit-done {
+    opacity: 0;
 }
