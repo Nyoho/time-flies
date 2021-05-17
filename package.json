@@ -14,7 +14,9 @@
     "build": "NODE_ENV=production webpack --mode production",
     "build:size": "NODE_ENV=production webpack --json | webpack-bundle-size-analyzer",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --collectCoverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
