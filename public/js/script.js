@@ -4,7 +4,7 @@ function myCtrl($scope, $timeout) {
     loop();
     $scope.sw = 0;
 
-    function continuousFraction(x) {
+    function continuedFraction(x) {
         var a = x;
         var b = a % 1;
         var a0 = Math.round(a - b);
@@ -23,7 +23,7 @@ function myCtrl($scope, $timeout) {
 
     $scope.infrequentUpdate = function(){
         $timeout(function(){
-                     var r = continuousFraction($scope.ratio);
+                     var r = continuedFraction($scope.ratio);
                      $scope.fracDenominator = r.denominator;
                      $scope.fracNumerator = r.numerator;
                      changeRatioText($scope.sw);
