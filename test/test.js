@@ -17,9 +17,9 @@
 
 // import { myCtrl } from "../public/js/script.js";
 
-// describe('continuousFraction', function () {
+// describe('continuedFraction', function () {
 //   it('あ', function () {
-//     assert.equal(continuousFraction(0.5), Fraction(1,2), '0.5 = 1/2');
+//     assert.equal(continuedFraction(0.5), Fraction(1,2), '0.5 = 1/2');
 //   });
 // });
 

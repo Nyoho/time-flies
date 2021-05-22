@@ -1,7 +1,7 @@
 //import Fraction from './fraction'
 var Fraction = require('./fraction').Fraction
 
-function continuousFraction(x) {
+function continuedFraction(x) {
   var a = x;
   var b = a % 1;
   var a0 = Math.round(a - b);
@@ -39,7 +39,7 @@ const Time = class {
       this.humanString = "紀元前 " + Math.ceil(-d) + " 年"
     }
 
-    this.fraction = continuousFraction(this.ratio);
+    this.fraction = continuedFraction(this.ratio);
     this.numerator = this.fraction.numerator;
     this.denominator = this.fraction.denominator;
   }

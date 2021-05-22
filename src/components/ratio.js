@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-//import continuousFraction from './continuous-fraction'
+//import continuedFraction from './continued-fraction'
 var Fraction = require('./fraction').Fraction
-var continuousFraction = require('./continuous-fraction').continuousFraction
+var continuedFraction = require('./continued-fraction').continuedFraction
 
 const Remain = props => {
   const [flipped, setFlipped] = useState(false);
   const [degree, setDegree] = useState(2);
   
   const time = props.time;
-  const frac = continuousFraction(time.ratio, degree);
+  const frac = continuedFraction(time.ratio, degree);
 
   return <>
            <div className="col-md-2 col-sm-6 text-center ">
