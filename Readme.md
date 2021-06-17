@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Nyoho/time-flies.png)](https://travis-ci.org/Nyoho/time-flies)
+[![Build Status](https://travis-ci.com/Nyoho/time-flies.svg)](https://travis-ci.com/Nyoho/time-flies)
 
 # Time Flies
 
