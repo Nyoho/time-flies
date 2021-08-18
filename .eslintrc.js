@@ -5,7 +5,8 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    'prettier',
     // "plugin:@typescript-eslint/recommended"
   ],
   // "parser": "@typescript-eslint/parser",
@@ -18,9 +19,6 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    indent: ["warn", 2],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"],
-    semi: ["warn"]
+    semi: 'off',
   }
 };
