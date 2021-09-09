@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Nyoho/time-flies.svg)](https://travis-ci.com/Nyoho/time-flies)
+![Build status](https://github.com/Nyoho/time-flies/actions/workflows/main.yml/badge.svg)
 
 # Time Flies
 
