@@ -5,7 +5,7 @@
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "mini-css-extract-plugin": "^2.2.2",
+    "mini-css-extract-plugin": "^2.3.0",
     "morgan": "^1.10.0"
   },
   "scripts": {
@@ -22,7 +22,7 @@
     "test:cov": "jest --collectCoverage"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
@@ -43,7 +43,7 @@
     "react-hot-loader": "^4.13.0",
     "react-transition-group": "^4.4.2",
     "sass-loader": "^12.1.0",
-    "style-loader": "^3.1.0",
+    "style-loader": "^3.3.0",
     "supertest": "^6.1.6",
     "webpack": "^5.51.1",
     "webpack-bundle-size-analyzer": "^3.1.0",
