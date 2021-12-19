@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 const pkg = require('./package')
 const DEV_PORT = process.env.PORT || 4444
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -28,15 +29,21 @@ module.exports = {
     ],
   },
   devtool: 'source-map',
-  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' })],
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'style.css' }),
+    // new ESLintPlugin({
+    //   extensions: ['.tsx', '.ts', '.js'],
+    //   exclude: 'node_modules'
+    // }),
+  ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
   devServer: {
-    // open: true,
-    // openPage: "index.html",
-    contentBase: path.join(__dirname, 'public'),
-    watchContentBase: true,
+    open: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
     port: 3000,
   }
 }
