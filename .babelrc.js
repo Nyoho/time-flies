@@ -16,8 +16,8 @@ const plugins = [
 const presets = ['@babel/preset-react']
 
 const presetsByEnv = {
-  development: [['@babel/preset-env', { targets: { chrome: 65 } }]],
-  test: [['@babel/preset-env', { targets: { node: '8.5' } }]],
+  development: [['@babel/preset-env', { targets: { node: 'current' } }]],
+  test: [['@babel/preset-env', { targets: { node: 'current' } }]],
   production: [
     [
       '@babel/preset-env',
