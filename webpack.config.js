@@ -40,7 +40,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
   devServer: {
-    open: true,
+    open: false,
     static: {
       directory: path.join(__dirname, 'public'),
     },
