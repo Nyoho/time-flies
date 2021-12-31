@@ -12,7 +12,9 @@ const Remain = props => {
   const frac = continuedFraction(time.ratio, degree);
 
   function handleChange(event) {
-    const n = parseInt(event.target.value);
+    const s = event.target.value;
+    if (s == '') { return }
+    const n = parseInt(s);
     if (!isNaN(n)) {
       setDegree(n)
     }
@@ -53,7 +55,7 @@ const Remain = props => {
                    {flipped ?
                     <p>この分数は{degree}次の連分数近似です。
                       <input type='text'
-                             value={degree}
+                             defaultValue={degree || '2'}
                              size='3'
                               onChange={handleChange}
                        />次に変更
