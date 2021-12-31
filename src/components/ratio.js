@@ -11,6 +11,13 @@ const Remain = props => {
   const time = props.time;
   const frac = continuedFraction(time.ratio, degree);
 
+  function handleChange(event) {
+    const n = parseInt(event.target.value);
+    if (!isNaN(n)) {
+      setDegree(n)
+    }
+  }
+
   return <>
            <div className="col-md-2 col-sm-6 text-center ">
              <div className="service-item">
@@ -48,7 +55,7 @@ const Remain = props => {
                       <input type='text'
                              value={degree}
                              size='3'
-                              onChange={e => setDegree(e.target.value)}
+                              onChange={handleChange}
                        />次に変更
                      </p>
                      :
