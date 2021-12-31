@@ -7,16 +7,23 @@ var continuedFraction = require('./continued-fraction').continuedFraction
 const Remain = props => {
   const [flipped, setFlipped] = useState(false);
   const [degree, setDegree] = useState(2);
+  const [warning, setWarning] = useState(false);
   
   const time = props.time;
   const frac = continuedFraction(time.ratio, degree);
 
   function handleChange(event) {
     const s = event.target.value;
-    if (s == '') { return }
+    if (s == '') {
+      setWarning(true);
+      return
+    }
     const n = parseInt(s);
     if (!isNaN(n) && n >= 0) {
+      setWarning(false)
       setDegree(n)
+    } else {
+      setWarning(true)
     }
   }
 
@@ -59,6 +66,7 @@ const Remain = props => {
                              size='3'
                               onChange={handleChange}
                        />次に変更
+                      { warning ? <span className="warningMessage">非負の整数を入力して下さい</span> : '' }
                      </p>
                      :
                      <p>クリックで連分数近似が表示されます。</p>
