@@ -15,7 +15,7 @@ const Remain = props => {
     const s = event.target.value;
     if (s == '') { return }
     const n = parseInt(s);
-    if (!isNaN(n)) {
+    if (!isNaN(n) && n >= 0) {
       setDegree(n)
     }
   }
