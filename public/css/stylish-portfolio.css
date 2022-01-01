@@ -322,12 +322,3 @@ i.scroll:hover {
 .flip-exit-done {
     opacity: 0;
 }
-
-.warningMessage {
-    display: block;
-    padding: 8px;
-    background-color: #e04044;
-    color: black;
-    border-radius: 4px;
-}
-

@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 //import continuedFraction from './continued-fraction'
 var Fraction = require('./fraction').Fraction
 var continuedFraction = require('./continued-fraction').continuedFraction
+import WarningMessage from './warning-message'
 
 const Remain = props => {
   const [flipped, setFlipped] = useState(false);
@@ -66,7 +67,7 @@ const Remain = props => {
                              size='3'
                               onChange={handleChange}
                        />次に変更
-                      { warning ? <span className="warningMessage">非負の整数を入力して下さい</span> : '' }
+                      { warning ? <WarningMessage>非負の整数を入力して下さい</WarningMessage> : '' }
                      </p>
                      :
                      <p>クリックで連分数近似が表示されます。</p>
