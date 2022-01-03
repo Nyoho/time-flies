@@ -22,6 +22,11 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        include: __dirname
+      }
       // {
       //   test: /\.(sass|scss)$/,
       //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
