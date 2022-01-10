@@ -1,5 +1,6 @@
 //import Fraction from './fraction'
 var Fraction = require('./fraction').Fraction
+import RationalNumber from './rational-number'
 
 function continuedFraction(x) {
   var a = x;
