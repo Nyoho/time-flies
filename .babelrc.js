@@ -1,5 +1,4 @@
 const plugins = [
-  'react-hot-loader/babel',
   '@babel/plugin-proposal-object-rest-spread',
   [
     'module-resolver',
