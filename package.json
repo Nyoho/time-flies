@@ -46,7 +46,7 @@
     "style-loader": "^3.3.3",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
-    "ts-loader": "^9.4.2",
+    "ts-loader": "^9.4.3",
     "typescript": "^5.0.4",
     "undici": "^5.22.1",
     "webpack": "^5.83.1",
