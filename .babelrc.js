@@ -1,5 +1,4 @@
 const plugins = [
-  '@babel/plugin-proposal-object-rest-spread',
   [
     'module-resolver',
     {
