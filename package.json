@@ -47,7 +47,7 @@
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.4",
     "undici": "^6.9.0",
     "webpack": "^5.91.0",
     "webpack-bundle-size-analyzer": "^3.1.0",
