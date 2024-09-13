@@ -1,6 +1,7 @@
 {
   "name": "time-flies",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "compression": "^1.7.4",
