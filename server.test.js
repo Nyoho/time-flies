@@ -1,5 +1,5 @@
-const app = require('./server');
-const request = require('supertest');
+import app from './server';
+import request from 'supertest';
 
 test('server is listening to / as an html', done => {
   request(app)
