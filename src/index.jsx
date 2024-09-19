@@ -1,7 +1,8 @@
+import { createRoot } from 'react-dom/client'
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Time } from './components/time.js'
-import TimeFlies from './components/time-flies'
+import TimeFlies from './components/time-flies.jsx'
 // import Lorem from './components/lorem.js'
 
 const Main = () => {
@@ -30,4 +31,6 @@ const Main = () => {
   return (<TimeFlies time={time}/>)
 }
 
-ReactDOM.render(<Main />, document.getElementById('root'))
+createRoot(document.getElementById('root')).render(
+  <Main />
+)

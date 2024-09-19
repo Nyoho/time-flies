@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Time } from 'components/time'
-import Ratio from 'components/ratio'
+import { Time } from './time'
+import Ratio from './ratio.jsx'
 
 const TimeFlies = props => {
   const [flipped, setFlipped] = useState(false);
