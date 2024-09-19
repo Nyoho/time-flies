@@ -2,6 +2,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var compression = require('compression');
+const path = require('path');
 var app = express();
 
 var user = process.env.USER;
