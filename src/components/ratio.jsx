@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-//import continuedFraction from './continued-fraction'
-var Fraction = require('./fraction').Fraction
-var continuedFraction = require('./continued-fraction').continuedFraction
+import { continuedFraction } from './continued-fraction'
+import { Fraction } from './fraction'
 import WarningMessage from './warning-message'
 
 const Remain = props => {
@@ -56,7 +55,7 @@ const Remain = props => {
                <div className="tweet" ngswitchon="sw">
                  <a href="https://twitter.com/NeXTSTEP2OSX/"></a>
                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                 <p>
+                 <div>
                    <a href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年の ${!flipped ? time.ratio*100 + '%25' : `${frac.numerator}/${frac.denominator}`} は終了しました。`}>
                      <i className="fa fa-twitter fa-2x"></i>
                    </a>
@@ -72,7 +71,7 @@ const Remain = props => {
                      :
                      <p>クリックで連分数近似が表示されます。</p>
                     }
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

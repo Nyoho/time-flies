@@ -15,7 +15,12 @@ if (user && pass) {
 
 app.use(morgan('dev'));
 app.use(compression({ filter: shouldCompress }));
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 if (!module.parent) {
 const server = app.listen(app.get('port'), err => {
