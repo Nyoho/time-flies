@@ -35,9 +35,11 @@ class RationalNumber {
         const d = this.gcd(this.numerator, this.denominator);
         this.numerator /= d;
         this.denominator /= d;
-        
     }
-    
+
+    toString(): string {
+        return `${this.numerator}/${this.denominator}`
+    }
 }
 
 export default RationalNumber
