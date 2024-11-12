@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { continuedFraction } from './continued-fraction'
-import { Fraction } from './fraction'
 import WarningMessage from './warning-message'
 
 const Remain = props => {
