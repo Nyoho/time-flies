@@ -1,24 +1,3 @@
-//import Fraction from './fraction'
-import { Fraction } from './fraction'
-import RationalNumber from './rational-number'
-
-function continuedFraction(x) {
-  var a = x;
-  var b = a % 1;
-  var a0 = Math.round(a - b);
-  if (b == 0)
-    return a0;
-  a = 1/b;
-  b = a % 1;
-  var a1 = Math.round(a - b);
-  if (b == 0)
-    return new Fraction(a0*a1+1, a1);
-  a = 1/b;
-  b = a % 1;
-  var a2 = Math.round(a - b);
-  return new Fraction(a0*(a1*a2+1)+a2, a1*a2+1);
-}
-
 const Time = class {
   constructor(date) {
     this.date = date;
@@ -39,10 +18,6 @@ const Time = class {
     } else {
       this.humanString = "紀元前 " + Math.ceil(-d) + " 年"
     }
-
-    this.fraction = continuedFraction(this.ratio);
-    this.numerator = this.fraction.numerator;
-    this.denominator = this.fraction.denominator;
   }
 
   static getDateString(dt) {
