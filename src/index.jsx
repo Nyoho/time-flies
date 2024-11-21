@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { Time } from './components/time.js'
 import TimeFlies from './components/time-flies.jsx'
-// import Lorem from './components/lorem.js'
 
 const Main = () => {
   const [time, setTime] = useState(new Time(new Date()))
@@ -25,7 +24,11 @@ const Main = () => {
   
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
+    return () => {
+       if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current);
+      }
+    };
   }, []);
   
   return (<TimeFlies time={time}/>)
