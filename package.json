@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^2.1.8",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-webpack-plugin": "^4.2.0",
