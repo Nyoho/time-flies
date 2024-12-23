@@ -23,7 +23,7 @@
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^2.1.8",
     "eslint": "^9.16.0",
