@@ -39,7 +39,7 @@ const Remain = props => {
              <div className="service-item">
                <div className="animate-switch-container" onClick={() => {
                       setFlipped(!flipped);
-                      trackCustomEvent('ratio_click', `ratio_action_${flipped}`)
+                      trackCustomEvent('ratio_click', 'ratio_action', flipped)
                     }}>
                  <div className="circle-box-container">
                    <CSSTransition in={!flipped} timeout={500} classNames="flip" unmountOnExit>
