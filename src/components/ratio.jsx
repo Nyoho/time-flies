@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { continuedFraction } from './continued-fraction'
 import WarningMessage from './warning-message'
@@ -10,6 +10,14 @@ const Remain = props => {
   
   const time = props.time;
   const frac = continuedFraction(time.ratio, degree);
+
+  useEffect(() => {
+    gtag('event', 'page_view', {
+      'page_location': window.location.href,
+      'page_path': window.location.pathname,
+      'page_title': document.title
+    });
+  }, []);
 
   function handleChange(event) {
     const s = event.target.value;
@@ -29,8 +37,10 @@ const Remain = props => {
   return <>
            <div className="col-md-2 col-sm-6 text-center ">
              <div className="service-item">
-               <div className="animate-switch-container" onClick={() => setFlipped(!flipped)}>
-
+               <div className="animate-switch-container" onClick={() => {
+                      setFlipped(!flipped);
+                      trackCustomEvent('ratio_click', `ratio_action_${flipped}`)
+                    }}>
                  <div className="circle-box-container">
                    <CSSTransition in={!flipped} timeout={500} classNames="flip" unmountOnExit>
                      <div className='circle-box'>
@@ -76,5 +86,13 @@ const Remain = props => {
             </div>
           </>
 }
+
+const trackCustomEvent = (eventCategory, eventAction, eventLabel = null) => {
+  gtag('event', eventCategory, {
+      'event_category': eventCategory,
+      'event_action': eventAction,
+      'event_label': eventLabel
+    });
+};
 
 export default Remain;
