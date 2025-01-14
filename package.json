@@ -25,7 +25,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.20.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/ui": "^2.1.8",
+    "@vitest/ui": "^3.0.2",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
@@ -41,6 +41,6 @@
     "typescript": "^5.7.3",
     "undici": "^7.2.1",
     "vite": "^6.0.7",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.2"
   }
 }
