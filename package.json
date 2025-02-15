@@ -23,6 +23,8 @@
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^3.0.7",
