@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Time } from './time'
 import Ratio from './ratio.jsx'
+import CircleItem from './CircleItem'
 
 const TimeFlies = props => {
   const [flipped, setFlipped] = useState(false);
@@ -23,21 +24,12 @@ const TimeFlies = props => {
 
                  <div className="row">
 
-                   <div className="col-md-2 col-md-offset-1 col-sm-12 text-center">
-                     <div className="service-item">
+                   <CircleItem mainText={
+                                 Time.getDateString(time.date) + '\n' +
+                                   Time.getTimeString(time.date)}
+                               subText="" header='現在時刻'>
+                   </CircleItem>
 
-                       <div className="circle-box-container">
-                         <div className="circle-box">
-                           <div className="cell" onClick={() => ''}>
-                             {Time.getDateString(time.date)}<br/>
-                             {Time.getTimeString(time.date)}
-                           </div>
-                         </div>
-
-                       </div>
-                       <h4>現在時刻</h4>
-                     </div>
-                   </div>
 
                    <Ratio time={time}/>
 
