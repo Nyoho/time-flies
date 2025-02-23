@@ -22,35 +22,27 @@ const TimeFlies = props => {
                    <div id="bar-graph"></div>
                  </div>
 
-                 <div className="row">
+                 <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
 
-                   <CircleItem mainText={
+                   <CircleItem mainText=''
+                               subText={
                                  Time.getDateString(time.date) + '\n' +
                                    Time.getTimeString(time.date)}
-                               subText="" header='現在時刻'>
+                                header='現在時刻'>
                    </CircleItem>
 
 
                    <Ratio time={time}/>
 
-                   <div className="col-md-2 col-sm-6 text-center">
-                     <div className="service-item">
-                       <div className="circle-box-container">
-                         <div className="circle-box">
-                           <div className="cell">
-                             <div><span className="main-part">{Math.floor(time.remain * 100)}</span>.<span className="">{String(Math.floor((time.remain * 100 % 1)*10000000)).padStart(7, "0")}</span> %</div>
-                           </div>
-                         </div>
-                       </div>
-                       <h4>残り</h4>
+                   <CircleItem mainText={Math.floor(time.remain * 100)}
+                               subText={+ String(Math.floor((time.remain * 100 % 1)*10000000)).padStart(7, "0") + ' %'}
+                                header='残り'>
                        <div className="tweet">
                          <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                          <p><a href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年も残すところあと ${time.remain*100} パーセントです。`}> 
                             <i className="fa fa-twitter fa-2x"></i></a></p>
                        </div>
-                     </div>
-                   </div>
-
+                   </CircleItem>
 
                    <div className="col-md-2 col-sm-6 text-center">
                      <div className="service-item">
