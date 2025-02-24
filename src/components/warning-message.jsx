@@ -8,9 +8,6 @@ const style = {
   borderRadius: '4px',
 }
 
-const WarningMessage = ({children}) =>
-      <span style={style}>
-        {children}
-      </span>
+const WarningMessage = ({ children }) => <span style={style}>{children}</span>
 
-export default WarningMessage;
+export default WarningMessage

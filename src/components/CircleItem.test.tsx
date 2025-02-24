@@ -12,9 +12,11 @@ describe('CircleItem', () => {
   })
 
   it('childrenが機能している', () => {
-    render(<CircleItem mainText="main" subText="sub" header="header">
-      <div>内側</div>
-    </CircleItem>)
+    render(
+      <CircleItem mainText="main" subText="sub" header="header">
+        <div>内側</div>
+      </CircleItem>,
+    )
     expect(screen.getByText(/内側/)).toBeInTheDocument()
   })
 })
