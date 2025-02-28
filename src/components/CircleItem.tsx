@@ -26,7 +26,7 @@ const CircleItem = ({
 }: CircleItemProps) => {
   const defaultContent = (
     <div>
-      <span className="main-part">{mainText}</span> {subText}
+      <span className="main-part">{mainText}</span>{subText}
     </div>
   )
 
