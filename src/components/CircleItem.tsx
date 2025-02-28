@@ -26,7 +26,8 @@ const CircleItem = ({
 }: CircleItemProps) => {
   const defaultContent = (
     <div>
-      <span className="main-part">{mainText}</span>{subText}
+      <span className="main-part">{mainText}</span>
+      {subText}
     </div>
   )
 
@@ -43,17 +44,13 @@ const CircleItem = ({
             <div className="circle-box-container">
               <CSSTransition in={!flipped} timeout={500} classNames="flip" unmountOnExit>
                 <div className="circle-box">
-                  <div className="cell">
-                    {frontContent || defaultContent}
-                  </div>
+                  <div className="cell">{frontContent || defaultContent}</div>
                 </div>
               </CSSTransition>
 
               <CSSTransition in={flipped} timeout={500} classNames="flip" unmountOnExit>
                 <div className="circle-box">
-                  <div className="cell">
-                    {backContent}
-                  </div>
+                  <div className="cell">{backContent}</div>
                 </div>
               </CSSTransition>
             </div>
@@ -61,9 +58,7 @@ const CircleItem = ({
         ) : (
           <div className="circle-box-container">
             <div className="circle-box">
-              <div className="cell">
-                {defaultContent}
-              </div>
+              <div className="cell">{defaultContent}</div>
             </div>
           </div>
         )}

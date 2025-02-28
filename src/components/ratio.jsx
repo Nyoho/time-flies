@@ -38,10 +38,7 @@ const Remain = (props) => {
   const frontContent = (
     <div>
       <span className="main-part">{Math.floor(time.ratio * 100)}</span>.
-      <span className="">
-        {String(Math.floor(((time.ratio * 100) % 1) * 10000000)).padStart(7, '0')}
-      </span>{' '}
-      %
+      <span className="">{String(Math.floor(((time.ratio * 100) % 1) * 10000000)).padStart(7, '0')}</span> %
     </div>
   )
 
