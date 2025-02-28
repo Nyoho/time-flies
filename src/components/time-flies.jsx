@@ -34,7 +34,7 @@ const TimeFlies = (props) => {
 
               <CircleItem
                 mainText={Math.floor(time.remain * 100)}
-                subText={+String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0') + ' %'}
+                subText={'.' + String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0') + ' %'}
                 header="残り"
               >
                 <div className="tweet">
