@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Time } from './time'
 import Ratio from './ratio.jsx'
 import CircleItem from './CircleItem'
+import TweetItem from './TweetItem'
 
 const TimeFlies = (props) => {
   const [flipped, setFlipped] = useState(false)
@@ -37,30 +38,12 @@ const TimeFlies = (props) => {
                 subText={'.' + String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0') + ' %'}
                 header="残り"
               >
-                <div className="tweet">
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p>
-                    <a
-                      href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年も残すところあと ${time.remain * 100} パーセントです。`}
-                    >
-                      <i className="fa fa-twitter fa-2x"></i>
-                    </a>
-                  </p>
-                </div>
+                <TweetItem text={`今年も残すところあと ${time.remain * 100} パーセントです。`} />
               </CircleItem>
 
               <CircleItem mainText={Time.getTimeString(time.oneDay)} header="1日なら">
                 <p>今年1年を1日(24時間)にたとえると、現在{Time.getTimeString(time.oneDay, 'ja')}です。</p>
-                <div className="tweet">
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p>
-                    <a
-                      href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年1年を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`}
-                    >
-                      <i className="fa fa-twitter fa-2x"></i>
-                    </a>
-                  </p>
-                </div>
+                <TweetItem text={`今年1年を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`} />
               </CircleItem>
 
               <CircleItem subText={time.humanString} header="人類の歴史なら">
@@ -68,16 +51,7 @@ const TimeFlies = (props) => {
                   今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{time.humanString}</span>
                   です。
                 </p>
-                <div className="tweet">
-                  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-                  <p>
-                    <a
-                      href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}
-                    >
-                      <i className="fa fa-twitter fa-2x"></i>
-                    </a>
-                  </p>
-                </div>
+                <TweetItem text={`今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`} />
               </CircleItem>
             </div>
           </div>
