@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import { continuedFraction } from './continued-fraction'
 import WarningMessage from './warning-message'
 import CircleItem from './CircleItem'
+import TweetItem from './TweetItem'
 
 const Remain = (props) => {
   const [flipped, setFlipped] = useState(false)
@@ -66,27 +67,18 @@ const Remain = (props) => {
       frontContent={frontContent}
       backContent={backContent}
     >
-      <div className="tweet" ngswitchon="sw">
-        <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-        <div>
-          <a
-            href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=今年の ${!flipped ? time.ratio * 100 + '%25' : `${frac.numerator}/${frac.denominator}`} は終了しました。`}
-          >
-            <i className="fa fa-twitter fa-2x"></i>
-          </a>
-          {flipped ? (
-            <p>
-              この分数は{degree}次の連分数近似です。
-              <input type="text" defaultValue={degree || '2'} size="3" onChange={handleChange} />
-              次に変更
-              {warning ? <WarningMessage>非負の整数を入力して下さい</WarningMessage> : ''}
-            </p>
-          ) : (
-            <p>クリックで連分数近似が表示されます。</p>
-          )}
-        </div>
-      </div>
-    </CircleItem>
+      <TweetItem text={`今年の ${!flipped ? time.ratio * 100 + '%' : `${frac.numerator}/${frac.denominator}`} は終了しました。`} />
+      {flipped ? (
+        <p>
+          この分数は{degree}次の連分数近似です。
+          <input type="text" defaultValue={degree || '2'} size="3" onChange={handleChange} />
+          次に変更
+          {warning ? <WarningMessage>非負の整数を入力して下さい</WarningMessage> : ''}
+        </p>
+      ) : (
+        <p>クリックで連分数近似が表示されます。</p>
+      )}
+    </CircleItem >
   )
 }
 
