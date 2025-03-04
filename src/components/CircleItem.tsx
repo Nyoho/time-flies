@@ -32,7 +32,7 @@ const CircleItem = ({
   )
 
   return (
-    <div className="col-md-2 col-sm-6 text-center">
+    <div className="col-lg-2 col-md-4 col-sm-6 col-12 text-center mb-3">
       <div className="service-item">
         {flippable ? (
           <div

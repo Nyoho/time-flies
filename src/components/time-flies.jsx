@@ -24,7 +24,7 @@ const TimeFlies = (props) => {
               <div id="bar-graph"></div>
             </div>
 
-            <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="row circle-items-container">
               <CircleItem
                 mainText=""
                 subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
