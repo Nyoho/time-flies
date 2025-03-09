@@ -67,7 +67,9 @@ const Remain = (props) => {
       frontContent={frontContent}
       backContent={backContent}
     >
-      <TweetItem text={`今年の ${!flipped ? time.ratio * 100 + '%' : `${frac.numerator}/${frac.denominator}`} は終了しました。`} />
+      <TweetItem
+        text={`今年の ${!flipped ? time.ratio * 100 + '%' : `${frac.numerator}/${frac.denominator}`} は終了しました。`}
+      />
       {flipped ? (
         <p>
           この分数は{degree}次の連分数近似です。
@@ -78,7 +80,7 @@ const Remain = (props) => {
       ) : (
         <p>クリックで連分数近似が表示されます。</p>
       )}
-    </CircleItem >
+    </CircleItem>
   )
 }
 

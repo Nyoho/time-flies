@@ -43,7 +43,9 @@ const TimeFlies = (props) => {
 
               <CircleItem mainText={Time.getTimeString(time.oneDay)} header="1日なら">
                 <p>今年1年を1日(24時間)にたとえると、現在{Time.getTimeString(time.oneDay, 'ja')}です。</p>
-                <TweetItem text={`今年1年を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`} />
+                <TweetItem
+                  text={`今年1年を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`}
+                />
               </CircleItem>
 
               <CircleItem subText={time.humanString} header="人類の歴史なら">
@@ -51,7 +53,9 @@ const TimeFlies = (props) => {
                   今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{time.humanString}</span>
                   です。
                 </p>
-                <TweetItem text={`今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`} />
+                <TweetItem
+                  text={`今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}
+                />
               </CircleItem>
             </div>
           </div>
