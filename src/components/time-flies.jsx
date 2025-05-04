@@ -14,7 +14,7 @@ const TimeFlies = (props) => {
         <div className="vert-text">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 col-md-offset-3 col-sm-12 text-center">
+              <div className="col-md-6 offset-md-3 col-sm-12 text-center">
                 <h1>{time.year}</h1>
                 <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
               </div>
@@ -24,7 +24,7 @@ const TimeFlies = (props) => {
               <div id="bar-graph"></div>
             </div>
 
-            <div className="row circle-items-container">
+            <div className="row justify-content-center">
               <CircleItem
                 mainText=""
                 subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
