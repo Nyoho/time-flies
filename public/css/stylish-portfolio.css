@@ -6,10 +6,6 @@ body {
   width: 100%;
 }
 
-:root {
-  --bs-font-sans-serif: "Helvetica Neue", Arial, sans-serif !important;
-}
-
 .vert-text {
   display: table-cell;
   vertical-align: middle;

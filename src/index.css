@@ -1,0 +1,16 @@
+:root {
+  --bs-body-font-size: 0.9375rem;
+
+  --bs-h4-font-size: 1.2rem;
+
+  --bs-font-sans-serif: "Helvetica Neue", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  font-family: var(--bs-font-sans-serif);
+  font-size: var(--bs-body-font-size);
+}
+
+h4 {
+  font-size: var(--bs-h4-font-size);
+}
