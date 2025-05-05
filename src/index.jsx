@@ -5,6 +5,7 @@ import { Time } from './components/time.js'
 import TimeFlies from './components/time-flies.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import './index.css'
 
 const Main = () => {
   const [time, setTime] = useState(new Time(new Date()))
