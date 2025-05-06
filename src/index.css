@@ -4,6 +4,9 @@
   --bs-h4-font-size: 1.2rem;
 
   --bs-font-sans-serif: "Helvetica Neue", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --bs-primary: #93DBFE;
+  --bs-primary-rgb:  147, 219, 254;
 }
 
 body {
