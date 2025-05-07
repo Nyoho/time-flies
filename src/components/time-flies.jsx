@@ -8,6 +8,7 @@ const TimeFlies = (props) => {
   const [flipped, setFlipped] = useState(false)
   const time = props.time
   const progressPercent = (1 - time.remain) * 100
+  const remainingPercent = time.remain * 100
 
   return (
     <>
@@ -24,7 +25,7 @@ const TimeFlies = (props) => {
             <div className="row mt-5 mb-3">
               <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
                 <div
-                  className="border border-2 border-primary"
+                  className="border border-2 border-primary d-flex"
                   role="progressbar"
                   aria-label="今年の経過割合"
                   aria-valuenow={progressPercent}
@@ -32,12 +33,18 @@ const TimeFlies = (props) => {
                   aria-valuemax="100"
                   style={{ height: '30px', fontSize: '1rem' }}
                 >
-                  <div
+                  <span
                     className="bg-primary text-black d-flex align-items-center justify-content-center small"
                     style={{ height: '28px', width: `${progressPercent}%` }}
                   >
                     {progressPercent.toFixed(7)}%
-                  </div>
+                  </span>
+                  <span
+                    className="d-flex align-items-center justify-content-center small"
+                    style={{ height: '28px', width: `${remainingPercent}%` }}
+                  >
+                    {remainingPercent.toFixed(7)}%
+                  </span>
                 </div>
               </div>
             </div>
