@@ -16,7 +16,7 @@ const TimeFlies = (props) => {
         <div className="vert-text">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 offset-md-3 col-sm-12 text-center">
+              <div className="col text-center">
                 <h1>{time.year}</h1>
                 <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
               </div>
