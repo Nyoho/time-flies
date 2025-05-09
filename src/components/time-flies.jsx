@@ -49,7 +49,8 @@ const TimeFlies = (props) => {
               </div>
             </div>
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center"
+              style={{ textAutospace: 'normal'}}>
               <CircleItem
                 mainText=""
                 subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
