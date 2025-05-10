@@ -4,18 +4,20 @@ import Ratio from './ratio.jsx'
 import CircleItem from './CircleItem'
 import TweetItem from './TweetItem'
 
-const TimeFlies = (props) => {
+const TimeFlies = ({ time, onTimeClick }) => {
   const [flipped, setFlipped] = useState(false)
-  const time = props.time
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
   return (
-    <>
+    <div className="time-flies">
       <div id="services" className="services">
         <div className="vert-text">
           <div className="container">
-            <div className="row">
+            <div className="row"
+              onClick={onTimeClick}
+              style={{ cursor: 'pointer' }}
+            >
               <div className="col text-center">
                 <h1>{time.year}</h1>
                 <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
@@ -50,7 +52,7 @@ const TimeFlies = (props) => {
             </div>
 
             <div className="row justify-content-center"
-              style={{ textAutospace: 'normal'}}>
+              style={{ textAutospace: 'normal' }}>
               <CircleItem
                 mainText=""
                 subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
@@ -87,7 +89,9 @@ const TimeFlies = (props) => {
           </div>
         </div>
       </div>
-    </>
+
+
+    </div>
   )
 }
 
