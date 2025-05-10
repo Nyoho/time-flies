@@ -8,33 +8,110 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
 
 const Main = () => {
-  const [time, setTime] = useState(new Time(new Date()))
+  const [timeOffset, setTimeOffset] = useState(0);
+  const [time, setTime] = useState(new Time(new Date()));
+  const [inputDateTime, setInputDateTime] = useState('');
+  const [isPaused, setIsPaused] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const requestRef = useRef()
-  const previousTimeRef = useRef()
+  const handleOpenModal = () => {
+    const currentAdjustedTime = new Date(new Date().getTime() + timeOffset);
+    // const formattedDateTime = currentAdjustedTime.toISOString().slice(0, 16);
+    const localISOString = new Date(currentAdjustedTime.getTime() - currentAdjustedTime.getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 16);
+    setInputDateTime(localISOString);
+    setIsModalOpen(true);
+    setIsPaused(true);
+  };
 
-  const animate = (time) => {
-    if (previousTimeRef.current != undefined) {
-      const deltaTime = time - previousTimeRef.current
-      const now = new Date()
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setIsPaused(false);
+  };
 
-      //setTime(prevTime => (prevTime + deltaTime));
-      setTime((prevTime) => new Time(now))
+  const requestRef = useRef();
+
+  const animate = () => {
+    if (!isPaused) {
+      const now = new Date();
+      const adjustedTime = new Date(now.getTime() + timeOffset);
+      setTime(new Time(adjustedTime));
     }
-    previousTimeRef.current = time
-    requestRef.current = requestAnimationFrame(animate)
-  }
+    requestRef.current = requestAnimationFrame(animate);
+  };
+
+  const handleTimeSlip = () => {
+    if (inputDateTime) {
+      const targetTime = new Date(inputDateTime);
+      const now = new Date();
+      const newOffset = targetTime.getTime() - now.getTime();
+      setTimeOffset(newOffset);
+      setIsModalOpen(false);
+      setIsPaused(false);
+    }
+  };
+
+  const resetToCurrentTime = () => {
+    setTimeOffset(0);
+    setIsModalOpen(false);
+    setIsPaused(false);
+  };
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate)
+    requestRef.current = requestAnimationFrame(animate);
     return () => {
       if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current)
+        cancelAnimationFrame(requestRef.current);
       }
-    }
-  }, [])
+    };
+  }, [isPaused]);
 
-  return <TimeFlies time={time} />
-}
+  return (
+    <div className="container">
+      <TimeFlies time={time} onTimeClick={handleOpenModal} />
+
+      <div className={`modal fade ${isModalOpen ? 'show' : ''}`}
+        style={{ display: isModalOpen ? 'block' : 'none' }}
+        tabIndex="-1"
+        role="dialog">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">時刻ワープ</h5>
+              <button type="button" className="btn-close"
+                onClick={handleCloseModal} aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="form-group">
+                <label htmlFor="modalDateTime">時刻:</label>
+                <input
+                  type="datetime-local"
+                  className="form-control"
+                  id="modalDateTime"
+                  value={inputDateTime}
+                  onChange={(e) => setInputDateTime(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary"
+                onClick={handleCloseModal}>キャンセル</button>
+              <button type="button" className="btn btn-primary"
+                onClick={handleTimeSlip}>この時刻にタイムスリップ</button>
+              <button type="button" className="btn btn-outline-secondary"
+                onClick={resetToCurrentTime}>現在時刻に戻る</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {isModalOpen && (
+        <div className="modal-backdrop fade show"
+          onClick={handleCloseModal}></div>
+      )}
+    </div>
+  );
+};
 
 createRoot(document.getElementById('root')).render(<Main />)
