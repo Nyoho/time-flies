@@ -58,6 +58,8 @@ const Main = () => {
     setIsPaused(false);
   };
 
+  const isTimeSlipped = timeOffset !== 0;
+
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
     return () => {
@@ -69,7 +71,23 @@ const Main = () => {
 
   return (
     <div className="container">
-      <TimeFlies time={time} onTimeClick={handleOpenModal} />
+      <TimeFlies
+        time={time}
+        onTimeClick={handleOpenModal}
+        isTimeSlipped={isTimeSlipped}
+      />
+
+      {isTimeSlipped && (
+        <div className="time-slip-indicator">
+          <span className="badge bg-warning text-dark">タイムスリップ中</span>
+          <button
+            className="btn btn-sm btn-outline-secondary ms-2"
+            onClick={resetToCurrentTime}
+          >
+            現在時刻に戻る
+          </button>
+        </div>
+      )}
 
       <div className={`modal fade ${isModalOpen ? 'show' : ''}`}
         style={{ display: isModalOpen ? 'block' : 'none' }}
