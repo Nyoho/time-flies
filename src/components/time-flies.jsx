@@ -4,13 +4,13 @@ import Ratio from './ratio.jsx'
 import CircleItem from './CircleItem'
 import TweetItem from './TweetItem'
 
-const TimeFlies = ({ time, onTimeClick }) => {
+const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
   const [flipped, setFlipped] = useState(false)
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
   return (
-    <div className="time-flies">
+    <div className={`time-flies ${isTimeSlipped ? 'time-slipped' : ''}`}>
       <div id="services" className="services">
         <div className="vert-text">
           <div className="container">
@@ -20,7 +20,7 @@ const TimeFlies = ({ time, onTimeClick }) => {
             >
               <div className="col text-center">
                 <h1>{time.year}</h1>
-                <h3>今年はどのぐらい過ぎ去ったのだろう。</h3>
+                <h3>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h3>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ const TimeFlies = ({ time, onTimeClick }) => {
               <CircleItem
                 mainText=""
                 subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
-                header="現在時刻"
+                header={`${isTimeSlipped ? 'その' : '現在'}時刻`}
               ></CircleItem>
 
               <Ratio time={time} />
@@ -66,23 +66,23 @@ const TimeFlies = ({ time, onTimeClick }) => {
                 subText={'.' + String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0') + ' %'}
                 header="残り"
               >
-                <TweetItem text={`今年も残すところあと ${time.remain * 100} パーセントです。`} />
+                <TweetItem text={`${isTimeSlipped ? 'あの頃' : '今年'}も残すところあと ${time.remain * 100} パーセントです。`} />
               </CircleItem>
 
               <CircleItem mainText={Time.getTimeString(time.oneDay)} header="1日なら">
-                <p>今年1年を1日(24時間)にたとえると、現在{Time.getTimeString(time.oneDay, 'ja')}です。</p>
+                <p>{isTimeSlipped ? 'あの頃' : '今年'}1年を1日(24時間)にたとえると、{isTimeSlipped ? 'その瞬間は' : '現在'}{Time.getTimeString(time.oneDay, 'ja')}です。</p>
                 <TweetItem
-                  text={`今年1年を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`}
+                  text={`${isTimeSlipped ? 'そのときの1年' : '今年1年'}を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`}
                 />
               </CircleItem>
 
               <CircleItem subText={time.humanString} header="人類の歴史なら">
                 <p>
-                  今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在<span id="human">{time.humanString}</span>
+                  {isTimeSlipped ? 'あの頃' : '今年'}1年を人類の歴史 (新人類, 20万年間) にたとえると、{isTimeSlipped ? 'その瞬間は' : '現在'}<span id="human">{time.humanString}</span>
                   です。
                 </p>
                 <TweetItem
-                  text={`今年1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}
+                  text={`${isTimeSlipped ? 'あの頃' : '今年'}1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}
                 />
               </CircleItem>
             </div>
@@ -91,7 +91,7 @@ const TimeFlies = ({ time, onTimeClick }) => {
       </div>
 
 
-    </div>
+    </div >
   )
 }
 
