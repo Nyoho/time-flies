@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import React, { useState, useEffect, useRef } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Time } from './components/time.js'
 import TimeFlies from './components/time-flies.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
+const TimeSlipModal = lazy(() => import('./components/TimeSlipModal'))
 
 const Main = () => {
   const [timeOffset, setTimeOffset] = useState(0);
@@ -89,45 +89,17 @@ const Main = () => {
         </div>
       )}
 
-      <div className={`modal fade ${isModalOpen ? 'show' : ''}`}
-        style={{ display: isModalOpen ? 'block' : 'none' }}
-        tabIndex="-1"
-        role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">時刻ワープ</h5>
-              <button type="button" className="btn-close"
-                onClick={handleCloseModal} aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              <div className="form-group">
-                <label htmlFor="modalDateTime">時刻:</label>
-                <input
-                  type="datetime-local"
-                  className="form-control"
-                  id="modalDateTime"
-                  value={inputDateTime}
-                  onChange={(e) => setInputDateTime(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary"
-                onClick={handleCloseModal}>キャンセル</button>
-              <button type="button" className="btn btn-primary"
-                onClick={handleTimeSlip}>この時刻にタイムスリップ</button>
-              <button type="button" className="btn btn-outline-secondary"
-                onClick={resetToCurrentTime}>現在時刻に戻る</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <TimeSlipModal
+          isModalOpen={isModalOpen}
+          inputDateTime={inputDateTime}
+          setInputDateTime={setInputDateTime}
+          handleCloseModal={handleCloseModal}
+          handleTimeSlip={handleTimeSlip}
+          resetToCurrentTime={resetToCurrentTime}
+        />
+      </Suspense>
 
-      {isModalOpen && (
-        <div className="modal-backdrop fade show"
-          onClick={handleCloseModal}></div>
-      )}
     </div>
   );
 };
