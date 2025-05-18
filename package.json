@@ -41,6 +41,7 @@
     "eslint-webpack-plugin": "^4.2.0",
     "jsdom": "^25.0.1",
     "mini-css-extract-plugin": "^2.9.2",
+    "postcss-purgecss": "^5.0.0",
     "prettier": "^3.5.3",
     "promise-retry": "^2.0.1",
     "react": "^18.3.1",
