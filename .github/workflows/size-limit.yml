@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
+      - run: npm ci
+      - run: npm run build
       - uses: andresz1/size-limit-action@v1.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
