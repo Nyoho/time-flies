@@ -38,7 +38,7 @@
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-webpack-plugin": "^4.2.0",
+    "eslint-webpack-plugin": "^5.0.1",
     "jsdom": "^25.0.1",
     "mini-css-extract-plugin": "^2.9.2",
     "postcss-purgecss": "^5.0.0",
