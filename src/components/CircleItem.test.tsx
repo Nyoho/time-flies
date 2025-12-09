@@ -1,6 +1,6 @@
 import React from 'react'
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import CircleItem from './CircleItem'
 import '@testing-library/jest-dom'
 
@@ -18,5 +18,46 @@ describe('CircleItem', () => {
       </CircleItem>,
     )
     expect(screen.getByText(/内側/)).toBeInTheDocument()
+  })
+
+  it('フリップ可能な場合、クリック後にバックコンテンツが表示される', async () => {
+    const handleFlip = vi.fn()
+    const { rerender } = render(
+      <CircleItem
+        mainText=""
+        subText=""
+        header="テスト"
+        flippable={true}
+        flipped={false}
+        onFlip={handleFlip}
+        frontContent={<div>フロント</div>}
+        backContent={<div>バック</div>}
+      />,
+    )
+
+    expect(screen.getByText('フロント')).toBeInTheDocument()
+    expect(screen.queryByText('バック')).not.toBeInTheDocument()
+
+    fireEvent.click(screen.getByText('フロント'))
+    expect(handleFlip).toHaveBeenCalled()
+
+    rerender(
+      <CircleItem
+        mainText=""
+        subText=""
+        header="テスト"
+        flippable={true}
+        flipped={true}
+        onFlip={handleFlip}
+        frontContent={<div>フロント</div>}
+        backContent={<div>バック</div>}
+      />,
+    )
+
+    await waitFor(() => {
+      const backElement = screen.getByText('バック')
+      expect(backElement).toBeInTheDocument()
+      expect(backElement).toBeVisible()
+    })
   })
 })

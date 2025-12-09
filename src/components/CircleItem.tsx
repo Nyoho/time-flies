@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 
 interface CircleItemProps {
@@ -24,6 +24,9 @@ const CircleItem = ({
   frontContent,
   backContent,
 }: CircleItemProps) => {
+  const frontRef = useRef<HTMLDivElement>(null)
+  const backRef = useRef<HTMLDivElement>(null)
+
   const defaultContent = (
     <div>
       <span className="main-part">{mainText}</span>
@@ -42,14 +45,14 @@ const CircleItem = ({
             }}
           >
             <div className="circle-box-container">
-              <CSSTransition in={!flipped} timeout={500} classNames="flip" unmountOnExit>
-                <div className="circle-box">
+              <CSSTransition nodeRef={frontRef} in={!flipped} timeout={500} classNames="flip" unmountOnExit>
+                <div ref={frontRef} className="circle-box">
                   <div className="cell">{frontContent || defaultContent}</div>
                 </div>
               </CSSTransition>
 
-              <CSSTransition in={flipped} timeout={500} classNames="flip" unmountOnExit>
-                <div className="circle-box">
+              <CSSTransition nodeRef={backRef} in={flipped} timeout={500} classNames="flip" unmountOnExit>
+                <div ref={backRef} className="circle-box">
                   <div className="cell">{backContent}</div>
                 </div>
               </CSSTransition>
