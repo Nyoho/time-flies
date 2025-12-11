@@ -67,7 +67,7 @@ const Main = () => {
         cancelAnimationFrame(requestRef.current);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, timeOffset]);
 
   return (
     <div className="container">
