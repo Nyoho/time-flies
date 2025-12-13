@@ -15,9 +15,9 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint src",
-    "lint:prettier": "prettier --check src",
-    "fix:prettier": "prettier --write src",
+    "lint": "biome check src",
+    "lint:fix": "biome check --write src",
+    "format": "biome format --write src",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "size": "npm run build && size-limit"
