@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { Time } from './time'
-import Ratio from './ratio.jsx'
+import { useState } from 'react'
 import CircleItem from './CircleItem'
+import Ratio from './ratio.jsx'
 import TweetItem from './TweetItem'
+import { Time } from './time'
 
 const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
-  const [flipped, setFlipped] = useState(false)
+  const [_flipped, _setFlipped] = useState(false)
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
@@ -14,8 +14,18 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
       <div id="services" className="services">
         <div className="vert-text">
           <div className="container">
-            <div className="row"
+            {/* biome-ignore lint/a11y/useSemanticElements: Bootstrap row requires a div */}
+            <div
+              className="row"
+              role="button"
+              tabIndex={0}
               onClick={onTimeClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  onTimeClick()
+                }
+              }}
               style={{ cursor: 'pointer' }}
             >
               <div className="col text-center">
@@ -51,11 +61,10 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
               </div>
             </div>
 
-            <div className="row justify-content-center"
-              style={{ textAutospace: 'normal' }}>
+            <div className="row justify-content-center" style={{ textAutospace: 'normal' }}>
               <CircleItem
                 mainText=""
-                subText={Time.getDateString(time.date) + '\n' + Time.getTimeString(time.date)}
+                subText={`${Time.getDateString(time.date)}\n${Time.getTimeString(time.date)}`}
                 header={`${isTimeSlipped ? 'その' : '現在'}時刻`}
               ></CircleItem>
 
@@ -63,14 +72,20 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
 
               <CircleItem
                 mainText={Math.floor(time.remain * 100)}
-                subText={'.' + String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0') + ' %'}
+                subText={`.${String(Math.floor(((time.remain * 100) % 1) * 10000000)).padStart(7, '0')} %`}
                 header="残り"
               >
-                <TweetItem text={`${isTimeSlipped ? 'あの頃' : '今年'}も残すところあと ${time.remain * 100} パーセントです。`} />
+                <TweetItem
+                  text={`${isTimeSlipped ? 'あの頃' : '今年'}も残すところあと ${time.remain * 100} パーセントです。`}
+                />
               </CircleItem>
 
               <CircleItem mainText={Time.getTimeString(time.oneDay)} header="1日なら">
-                <p>{isTimeSlipped ? 'あの頃' : '今年'}1年を1日(24時間)にたとえると、{isTimeSlipped ? 'その瞬間は' : '現在'}{Time.getTimeString(time.oneDay, 'ja')}です。</p>
+                <p>
+                  {isTimeSlipped ? 'あの頃' : '今年'}1年を1日(24時間)にたとえると、
+                  {isTimeSlipped ? 'その瞬間は' : '現在'}
+                  {Time.getTimeString(time.oneDay, 'ja')}です。
+                </p>
                 <TweetItem
                   text={`${isTimeSlipped ? 'そのときの1年' : '今年1年'}を1日24時間にたとえると、現在${Time.getTimeString(time.oneDay, 'ja')}です。`}
                 />
@@ -78,7 +93,9 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
 
               <CircleItem subText={time.humanString} header="人類の歴史なら">
                 <p>
-                  {isTimeSlipped ? 'あの頃' : '今年'}1年を人類の歴史 (新人類, 20万年間) にたとえると、{isTimeSlipped ? 'その瞬間は' : '現在'}<span id="human">{time.humanString}</span>
+                  {isTimeSlipped ? 'あの頃' : '今年'}1年を人類の歴史 (新人類, 20万年間) にたとえると、
+                  {isTimeSlipped ? 'その瞬間は' : '現在'}
+                  <span id="human">{time.humanString}</span>
                   です。
                 </p>
                 <TweetItem
@@ -89,9 +106,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
           </div>
         </div>
       </div>
-
-
-    </div >
+    </div>
   )
 }
 

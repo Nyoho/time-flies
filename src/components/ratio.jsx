@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { continuedFraction } from './continued-fraction'
-import WarningMessage from './warning-message'
+import { useEffect, useState } from 'react'
 import CircleItem from './CircleItem'
+import { continuedFraction } from './continued-fraction'
 import TweetItem from './TweetItem'
+import WarningMessage from './warning-message'
 
 const Remain = (props) => {
   const [flipped, setFlipped] = useState(false)
@@ -23,12 +22,12 @@ const Remain = (props) => {
 
   function handleChange(event) {
     const s = event.target.value
-    if (s == '') {
+    if (s === '') {
       setWarning(true)
       return
     }
-    const n = parseInt(s)
-    if (!isNaN(n) && n >= 0) {
+    const n = parseInt(s, 10)
+    if (!Number.isNaN(n) && n >= 0) {
       setWarning(false)
       setDegree(n)
     } else {
@@ -68,7 +67,7 @@ const Remain = (props) => {
       backContent={backContent}
     >
       <TweetItem
-        text={`今年の ${!flipped ? time.ratio * 100 + '%' : `${frac.numerator}/${frac.denominator}`} は終了しました。`}
+        text={`今年の ${!flipped ? `${time.ratio * 100}%` : `${frac.numerator}/${frac.denominator}`} は終了しました。`}
       />
       {flipped ? (
         <p>

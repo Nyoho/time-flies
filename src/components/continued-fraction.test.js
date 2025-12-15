@@ -1,5 +1,5 @@
-import RationalNumber from './rational-number'
 import { continuedFraction } from './continued-fraction'
+import RationalNumber from './rational-number'
 
 test('0.5 is 1/2', () => {
   const a = new RationalNumber(1, 2)

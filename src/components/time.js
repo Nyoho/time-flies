@@ -14,25 +14,25 @@ const Time = class {
     const d = this.year + 200000.0 * (this.ratio - 1.0)
     this.humanYear = Math.abs(d)
     if (d >= 0) {
-      this.humanString = '西暦 ' + Math.ceil(d) + ' 年'
+      this.humanString = `西暦 ${Math.ceil(d)} 年`
     } else {
-      this.humanString = '紀元前 ' + Math.ceil(-d) + ' 年'
+      this.humanString = `紀元前 ${Math.ceil(-d)} 年`
     }
   }
 
   static getDateString(dt) {
     const y = dt.getFullYear()
-    const m = ('00' + (dt.getMonth() + 1)).slice(-2)
-    const d = ('00' + dt.getDate()).slice(-2)
+    const m = `00${dt.getMonth() + 1}`.slice(-2)
+    const d = `00${dt.getDate()}`.slice(-2)
     return `${y}年${m}月${d}日`
   }
 
   static getTimeString(dt, lang = 'en') {
     const h = dt.getHours()
-    const m = ('00' + dt.getMinutes()).slice(-2)
-    const s = ('00' + dt.getSeconds()).slice(-2)
-    const ss = ('000' + dt.getMilliseconds()).slice(-3)
-    return lang == 'ja' ? `${h}時${m}分${s}.${ss}秒` : `${h}:${m}:${s}.${ss}`
+    const m = `00${dt.getMinutes()}`.slice(-2)
+    const s = `00${dt.getSeconds()}`.slice(-2)
+    const ss = `000${dt.getMilliseconds()}`.slice(-3)
+    return lang === 'ja' ? `${h}時${m}分${s}.${ss}秒` : `${h}:${m}:${s}.${ss}`
   }
 }
 

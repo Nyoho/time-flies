@@ -1,5 +1,3 @@
-import React from 'react'
-
 const style = {
   display: 'block',
   padding: '8px',

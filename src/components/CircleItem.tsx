@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import type React from 'react'
+import { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 
 interface CircleItemProps {
@@ -38,10 +39,19 @@ const CircleItem = ({
     <div className="col-lg-2 col-md-4 col-sm-6 col-12 text-center mb-3">
       <div className="service-item">
         {flippable ? (
+          // biome-ignore lint/a11y/useSemanticElements: styled as a container, not a standalone button
           <div
             className="animate-switch-container"
+            role="button"
+            tabIndex={0}
             onClick={() => {
               if (onFlip) onFlip()
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                if (onFlip) onFlip()
+              }
             }}
           >
             <div className="circle-box-container">
