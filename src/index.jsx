@@ -70,29 +70,81 @@ const Main = () => {
   }, [animate])
 
   return (
-    <div className="container">
-      <TimeFlies time={time} onTimeClick={handleOpenModal} isTimeSlipped={isTimeSlipped} />
+    <>
+      <div className="container">
+        <TimeFlies time={time} onTimeClick={handleOpenModal} isTimeSlipped={isTimeSlipped} />
 
-      {isTimeSlipped && (
-        <div className="time-slip-indicator">
-          <span className="badge bg-warning text-dark">タイムスリップ中</span>
-          <button type="button" className="btn btn-sm btn-outline-secondary ms-2" onClick={resetToCurrentTime}>
-            現在時刻に戻る
-          </button>
+        {isTimeSlipped && (
+          <div className="time-slip-indicator">
+            <span className="badge bg-warning text-dark">タイムスリップ中</span>
+            <button type="button" className="btn btn-sm btn-outline-secondary ms-2" onClick={resetToCurrentTime}>
+              現在時刻に戻る
+            </button>
+          </div>
+        )}
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <TimeSlipModal
+            isModalOpen={isModalOpen}
+            inputDateTime={inputDateTime}
+            setInputDateTime={setInputDateTime}
+            handleCloseModal={handleCloseModal}
+            handleTimeSlip={handleTimeSlip}
+            resetToCurrentTime={resetToCurrentTime}
+          />
+        </Suspense>
+      </div>
+
+      <div id="about" className="intro">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3 text-center">
+              <h2>光陰、矢のごとし。</h2>
+              <p className="lead">時間が過ぎ去りゆくのは、まるで矢のようであります。</p>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <TimeSlipModal
-          isModalOpen={isModalOpen}
-          inputDateTime={inputDateTime}
-          setInputDateTime={setInputDateTime}
-          handleCloseModal={handleCloseModal}
-          handleTimeSlip={handleTimeSlip}
-          resetToCurrentTime={resetToCurrentTime}
-        />
-      </Suspense>
-    </div>
+      <div className="callout intro">
+        <div className="vert-text">
+          <h1>Time flies.</h1>
+        </div>
+      </div>
+
+      <div className="call-to-action">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3 text-center">
+              <h3>Some milestones</h3>
+              <ul className="list-unstyled">
+                <li>Coming soon</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3 text-center">
+              <ul className="list-inline">
+                <li><a href="http://twitter.com/NeXTSTEP2OSX/"><i className="fa fa-twitter fa-3x" /></a></li>
+                <li><a href="http://facebook.com/Nyoho"><i className="fa fa-facebook fa-3x" /></a></li>
+              </ul>
+              <p>Fork me <a href="https://github.com/Nyoho/time-flies">Nyoho/time-flies</a></p>
+              <hr />
+              <p>
+                Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2020.
+                テンプレートは <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。
+                Photo by <a href="https://www.flickr.com/photos/wordsnpix/6143515789/">Richard Cahan</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }
 
