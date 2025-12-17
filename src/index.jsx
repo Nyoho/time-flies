@@ -71,29 +71,27 @@ const Main = () => {
 
   return (
     <>
-      <div className="container">
-        <TimeFlies time={time} onTimeClick={handleOpenModal} isTimeSlipped={isTimeSlipped} />
+      <TimeFlies time={time} onTimeClick={handleOpenModal} isTimeSlipped={isTimeSlipped} />
 
-        {isTimeSlipped && (
-          <div className="time-slip-indicator">
-            <span className="badge bg-warning text-dark">タイムスリップ中</span>
-            <button type="button" className="btn btn-sm btn-outline-secondary ms-2" onClick={resetToCurrentTime}>
-              現在時刻に戻る
-            </button>
-          </div>
-        )}
+      {isTimeSlipped && (
+        <div className="time-slip-indicator">
+          <span className="badge bg-warning text-dark">タイムスリップ中</span>
+          <button type="button" className="btn btn-sm btn-outline-secondary ms-2" onClick={resetToCurrentTime}>
+            現在時刻に戻る
+          </button>
+        </div>
+      )}
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <TimeSlipModal
-            isModalOpen={isModalOpen}
-            inputDateTime={inputDateTime}
-            setInputDateTime={setInputDateTime}
-            handleCloseModal={handleCloseModal}
-            handleTimeSlip={handleTimeSlip}
-            resetToCurrentTime={resetToCurrentTime}
-          />
-        </Suspense>
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <TimeSlipModal
+          isModalOpen={isModalOpen}
+          inputDateTime={inputDateTime}
+          setInputDateTime={setInputDateTime}
+          handleCloseModal={handleCloseModal}
+          handleTimeSlip={handleTimeSlip}
+          resetToCurrentTime={resetToCurrentTime}
+        />
+      </Suspense>
 
       <div id="about" className="intro">
         <div className="container">

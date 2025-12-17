@@ -11,7 +11,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
 
   return (
     <div className={`time-flies ${isTimeSlipped ? 'time-slipped' : ''}`}>
-      <div id="services" className="services">
+      <div className="main">
         <div className="vert-text">
           <div className="container">
             {/* biome-ignore lint/a11y/useSemanticElements: Bootstrap row requires a div */}

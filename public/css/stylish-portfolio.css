@@ -126,20 +126,19 @@ body {
   padding: 50px 0;
 }
 
-/* Services */
+/* Main */
 
 .main-part {
   font-size: x-large;
 }
 
-#services a {
+.main a {
   color: #93DBFE;
 }
 
-#root,
-.services {
+.main {
   display: table;
-  height: 100%;
+  min-height: 100dvh;
   width: 100%;
   background: #020607;
   padding: 50px 0;
