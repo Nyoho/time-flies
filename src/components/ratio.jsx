@@ -1,16 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import CircleItem from './CircleItem'
-import { continuedFraction } from './continued-fraction'
+import { continuedFraction, findNextFractionChange } from './continued-fraction'
 import TweetItem from './TweetItem'
 import WarningMessage from './warning-message'
 
-const Remain = (props) => {
+const Remain = ({ time, onMilestoneChange }) => {
   const [flipped, setFlipped] = useState(false)
   const [degree, setDegree] = useState(2)
   const [warning, setWarning] = useState(false)
 
-  const time = props.time
   const frac = continuedFraction(time.ratio, degree)
+
+  const nextChangeDate = useMemo(() => {
+    if (!flipped) return null
+    const nextRatio = findNextFractionChange(time.ratio, degree)
+    if (nextRatio === null) return null
+    const yearMs = time.nextNewYear.getTime() - time.thisNewYear.getTime()
+    return new Date(time.thisNewYear.getTime() + nextRatio * yearMs)
+  }, [frac.toString(), degree, flipped])
+
+  useEffect(() => {
+    if (onMilestoneChange) {
+      onMilestoneChange(
+        nextChangeDate
+          ? {
+              nextDate: nextChangeDate,
+              currentFraction: frac.toString(),
+            }
+          : null,
+      )
+    }
+  }, [nextChangeDate, onMilestoneChange])
 
   useEffect(() => {
     gtag('event', 'page_view', {

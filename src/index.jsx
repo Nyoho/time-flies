@@ -7,12 +7,28 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
 const TimeSlipModal = lazy(() => import('./components/TimeSlipModal'))
 
+const formatCountdown = (ms) => {
+  if (ms <= 0) return '間もなく'
+  const s = Math.floor(ms / 1000)
+  const days = Math.floor(s / 86400)
+  const hours = Math.floor((s % 86400) / 3600)
+  const minutes = Math.floor((s % 3600) / 60)
+  const seconds = s % 60
+  const parts = []
+  if (days > 0) parts.push(`${days}日`)
+  if (hours > 0) parts.push(`${hours}時間`)
+  if (minutes > 0) parts.push(`${minutes}分`)
+  parts.push(`${seconds}秒`)
+  return parts.join(' ')
+}
+
 const Main = () => {
   const [timeOffset, setTimeOffset] = useState(0)
   const [time, setTime] = useState(new Time(new Date()))
   const [inputDateTime, setInputDateTime] = useState('')
   const [isPaused, setIsPaused] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [fractionMilestone, setFractionMilestone] = useState(null)
 
   const handleOpenModal = () => {
     const currentAdjustedTime = new Date(Date.now() + timeOffset)
@@ -71,7 +87,12 @@ const Main = () => {
 
   return (
     <>
-      <TimeFlies time={time} onTimeClick={handleOpenModal} isTimeSlipped={isTimeSlipped} />
+      <TimeFlies
+        time={time}
+        onTimeClick={handleOpenModal}
+        isTimeSlipped={isTimeSlipped}
+        onFractionMilestoneChange={setFractionMilestone}
+      />
 
       {isTimeSlipped && (
         <div className="time-slip-indicator">
@@ -110,18 +131,20 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="call-to-action">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 text-center">
-              <h3>Some milestones</h3>
-              <ul className="list-unstyled">
-                <li>Coming soon</li>
-              </ul>
+      {fractionMilestone && (
+        <div className="call-to-action">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 offset-md-3 text-center">
+                <h3>Some milestones</h3>
+                <p>現在の連分数近似: {fractionMilestone.currentFraction}</p>
+                <p>次の変化: {fractionMilestone.nextDate.toLocaleString()}</p>
+                <p>あと {formatCountdown(fractionMilestone.nextDate - time.date)}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <footer>
         <div className="container">

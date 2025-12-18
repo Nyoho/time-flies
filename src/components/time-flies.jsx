@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import CircleItem from './CircleItem'
 import Ratio from './ratio.jsx'
 import TweetItem from './TweetItem'
 import { Time } from './time'
 
-const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
-  const [_flipped, _setFlipped] = useState(false)
+const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onFractionMilestoneChange }) => {
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
@@ -68,7 +66,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped }) => {
                 header={`${isTimeSlipped ? 'その' : '現在'}時刻`}
               ></CircleItem>
 
-              <Ratio time={time} />
+              <Ratio time={time} onMilestoneChange={onFractionMilestoneChange} />
 
               <CircleItem
                 mainText={Math.floor(time.remain * 100)}
