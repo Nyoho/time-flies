@@ -135,11 +135,17 @@ const Main = () => {
         <div className="call-to-action">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 offset-md-3 text-center">
+              <div className="col-md-6 offset-md-3 text-center milestone-section">
                 <h3>Some milestones</h3>
-                <p>現在の連分数近似: {fractionMilestone.currentFraction}</p>
-                <p>次の変化: {fractionMilestone.nextDate.toLocaleString()}</p>
-                <p>あと {formatCountdown(fractionMilestone.nextDate - time.date)}</p>
+                <p className="milestone-label">連分数近似が次に変わるまで</p>
+                <div className="milestone-countdown">
+                  {formatCountdown(fractionMilestone.nextDate - time.date)}
+                </div>
+                <div className="milestone-details">
+                  <span className="milestone-fraction">{fractionMilestone.currentFraction}</span>
+                  <span className="milestone-arrow">→</span>
+                  <span className="milestone-date">{fractionMilestone.nextDate.toLocaleString()}</span>
+                </div>
               </div>
             </div>
           </div>
