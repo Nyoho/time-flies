@@ -91,17 +91,9 @@ const Main = () => {
         time={time}
         onTimeClick={handleOpenModal}
         isTimeSlipped={isTimeSlipped}
+        onResetTime={resetToCurrentTime}
         onFractionMilestoneChange={setFractionMilestone}
       />
-
-      {isTimeSlipped && (
-        <div className="time-slip-indicator">
-          <span className="badge bg-warning text-dark">タイムスリップ中</span>
-          <button type="button" className="btn btn-sm btn-outline-secondary ms-2" onClick={resetToCurrentTime}>
-            現在時刻に戻る
-          </button>
-        </div>
-      )}
 
       <Suspense fallback={<div>Loading...</div>}>
         <TimeSlipModal

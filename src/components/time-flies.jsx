@@ -3,7 +3,7 @@ import Ratio from './ratio.jsx'
 import TweetItem from './TweetItem'
 import { Time } from './time'
 
-const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onFractionMilestoneChange }) => {
+const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime, onFractionMilestoneChange }) => {
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
@@ -29,6 +29,18 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onFractionMilestoneChange
               <div className="col text-center">
                 <h1>{time.year}</h1>
                 <h3>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h3>
+                {isTimeSlipped && (
+                  <div className="time-slip-indicator mt-2">
+                    <span className="badge bg-warning text-dark">タイムスリップ中</span>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-secondary ms-2"
+                      onClick={(e) => { e.stopPropagation(); onResetTime(); }}
+                    >
+                      現在時刻に戻る
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
