@@ -30,11 +30,11 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime, onFractionMi
                 <h1>{time.year}</h1>
                 <h3>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h3>
                 {isTimeSlipped && (
-                  <div className="time-slip-indicator mt-2">
-                    <span className="badge bg-warning text-dark">タイムスリップ中</span>
+                  <div className="time-slip-indicator">
+                    <span className="time-slip-label">タイムスリップ中</span>
                     <button
                       type="button"
-                      className="btn btn-sm btn-outline-secondary ms-2"
+                      className="time-slip-reset"
                       onClick={(e) => { e.stopPropagation(); onResetTime(); }}
                     >
                       現在時刻に戻る

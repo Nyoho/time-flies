@@ -414,3 +414,38 @@ i.scroll:hover {
   .milestone-countdown { font-size: 1.8rem; }
   .milestone-details { flex-direction: column; gap: 0.25rem; }
 }
+
+/* Time Slip Indicator */
+
+.time-slip-indicator {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.time-slip-label {
+  font-family: 'HelveticaNeue-UltraLight', 'Yanone Kaffeesatz', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: #93dbfe;
+  text-shadow: 0 0 15px rgba(147, 219, 254, 0.3);
+}
+
+.time-slip-reset {
+  font-size: 0.8rem;
+  color: rgba(147, 219, 254, 0.5);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(147, 219, 254, 0.3);
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.time-slip-reset:hover {
+  color: #93dbfe;
+  border-bottom-color: #93dbfe;
+}
