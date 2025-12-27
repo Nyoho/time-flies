@@ -1,9 +1,26 @@
+import { useState } from 'react'
 import CircleItem from './CircleItem'
 import Ratio from './ratio.jsx'
 import TweetItem from './TweetItem'
 import { Time } from './time'
 
-const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime, onFractionMilestoneChange }) => {
+const formatCountdown = (ms) => {
+  if (ms <= 0) return '間もなく'
+  const s = Math.floor(ms / 1000)
+  const days = Math.floor(s / 86400)
+  const hours = Math.floor((s % 86400) / 3600)
+  const minutes = Math.floor((s % 3600) / 60)
+  const seconds = s % 60
+  const parts = []
+  if (days > 0) parts.push(`${days}日`)
+  if (hours > 0) parts.push(`${hours}時間`)
+  if (minutes > 0) parts.push(`${minutes}分`)
+  parts.push(`${seconds}秒`)
+  return parts.join(' ')
+}
+
+const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
+  const [fractionMilestone, setFractionMilestone] = useState(null)
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
@@ -78,7 +95,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime, onFractionMi
                 header={`${isTimeSlipped ? 'その' : '現在'}時刻`}
               ></CircleItem>
 
-              <Ratio time={time} onMilestoneChange={onFractionMilestoneChange} />
+              <Ratio time={time} onMilestoneChange={setFractionMilestone} />
 
               <CircleItem
                 mainText={Math.floor(time.remain * 100)}
@@ -112,6 +129,21 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime, onFractionMi
                   text={`${isTimeSlipped ? 'あの頃' : '今年'}1年を人類の歴史 (新人類, 20万年間) にたとえると、現在${time.humanString}です。`}
                 />
               </CircleItem>
+            </div>
+
+            <div className={`row mt-4 milestone-section ${fractionMilestone ? 'milestone-visible' : ''}`}>
+              <div className="col-md-6 offset-md-3 text-center">
+                <h3>Some milestones</h3>
+                <p className="milestone-label">連分数近似が次に変わるまで</p>
+                <div className="milestone-countdown">
+                  {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
+                </div>
+                <div className="milestone-details">
+                  <span className="milestone-fraction">{fractionMilestone?.currentFraction ?? '\u00A0'}</span>
+                  <span className="milestone-arrow">→</span>
+                  <span className="milestone-date">{fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

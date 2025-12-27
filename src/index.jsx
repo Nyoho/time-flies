@@ -7,28 +7,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
 const TimeSlipModal = lazy(() => import('./components/TimeSlipModal'))
 
-const formatCountdown = (ms) => {
-  if (ms <= 0) return '間もなく'
-  const s = Math.floor(ms / 1000)
-  const days = Math.floor(s / 86400)
-  const hours = Math.floor((s % 86400) / 3600)
-  const minutes = Math.floor((s % 3600) / 60)
-  const seconds = s % 60
-  const parts = []
-  if (days > 0) parts.push(`${days}日`)
-  if (hours > 0) parts.push(`${hours}時間`)
-  if (minutes > 0) parts.push(`${minutes}分`)
-  parts.push(`${seconds}秒`)
-  return parts.join(' ')
-}
-
 const Main = () => {
   const [timeOffset, setTimeOffset] = useState(0)
   const [time, setTime] = useState(new Time(new Date()))
   const [inputDateTime, setInputDateTime] = useState('')
   const [isPaused, setIsPaused] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [fractionMilestone, setFractionMilestone] = useState(null)
 
   const handleOpenModal = () => {
     const currentAdjustedTime = new Date(Date.now() + timeOffset)
@@ -92,7 +76,6 @@ const Main = () => {
         onTimeClick={handleOpenModal}
         isTimeSlipped={isTimeSlipped}
         onResetTime={resetToCurrentTime}
-        onFractionMilestoneChange={setFractionMilestone}
       />
 
       <Suspense fallback={<div>Loading...</div>}>
@@ -122,27 +105,6 @@ const Main = () => {
           <h1>Time flies.</h1>
         </div>
       </div>
-
-      {fractionMilestone && (
-        <div className="call-to-action">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6 offset-md-3 text-center milestone-section">
-                <h3>Some milestones</h3>
-                <p className="milestone-label">連分数近似が次に変わるまで</p>
-                <div className="milestone-countdown">
-                  {formatCountdown(fractionMilestone.nextDate - time.date)}
-                </div>
-                <div className="milestone-details">
-                  <span className="milestone-fraction">{fractionMilestone.currentFraction}</span>
-                  <span className="milestone-arrow">→</span>
-                  <span className="milestone-date">{fractionMilestone.nextDate.toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       <footer>
         <div className="container">
