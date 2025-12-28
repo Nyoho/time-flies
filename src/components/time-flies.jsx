@@ -131,17 +131,21 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
               </CircleItem>
             </div>
 
-            <div className={`row mt-4 milestone-section ${fractionMilestone ? 'milestone-visible' : ''}`}>
-              <div className="col-md-6 offset-md-3 text-center">
-                <h3>Some milestones</h3>
-                <p className="milestone-label">連分数近似が次に変わるまで</p>
-                <div className="milestone-countdown">
-                  {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
-                </div>
-                <div className="milestone-details">
-                  <span className="milestone-fraction">{fractionMilestone?.currentFraction ?? '\u00A0'}</span>
-                  <span className="milestone-arrow">→</span>
-                  <span className="milestone-date">{fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}</span>
+            <div className={`milestone-revealer ${fractionMilestone ? 'milestone-visible' : ''}`}>
+              <div className="milestone-revealer-inner">
+                <div className="row mt-4 milestone-section">
+                  <div className="col-md-6 offset-md-3 text-center">
+                    <h3>Some milestones</h3>
+                    <p className="milestone-label">連分数近似が次に変わるまで</p>
+                    <div className="milestone-countdown">
+                      {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
+                    </div>
+                    <div className="milestone-details">
+                      <span className="milestone-fraction">{fractionMilestone?.currentFraction ?? '\u00A0'}</span>
+                      <span className="milestone-arrow">→</span>
+                      <span className="milestone-date">{fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

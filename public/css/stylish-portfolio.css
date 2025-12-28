@@ -359,19 +359,33 @@ i.scroll:hover {
   opacity: 0;
 }
 
-/* Milestone Section */
+/* Milestone Section - Grid Reveal */
+
+.milestone-revealer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
+}
+
+.milestone-revealer.milestone-visible {
+  grid-template-rows: 1fr;
+}
+
+.milestone-revealer-inner {
+  overflow: hidden;
+  min-height: 0;
+}
 
 .milestone-section {
   border-top: 1px solid rgba(147, 219, 254, 0.15);
   padding-top: 2rem;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 
-.milestone-section.milestone-visible {
+.milestone-revealer.milestone-visible .milestone-section {
   opacity: 1;
-  visibility: visible;
+  transition: opacity 0.4s ease-out 0.15s;
 }
 
 .milestone-label {
