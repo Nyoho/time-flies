@@ -141,8 +141,6 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
                       {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
                     </div>
                     <div className="milestone-details">
-                      <span className="milestone-fraction">{fractionMilestone?.currentFraction ?? '\u00A0'}</span>
-                      <span className="milestone-arrow">→</span>
                       <span className="milestone-date">{fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}</span>
                     </div>
                   </div>
