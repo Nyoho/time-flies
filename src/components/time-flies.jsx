@@ -11,12 +11,14 @@ const formatCountdown = (ms) => {
   const hours = Math.floor((s % 86400) / 3600)
   const minutes = Math.floor((s % 3600) / 60)
   const seconds = s % 60
-  const parts = []
-  if (days > 0) parts.push(`${days}日`)
-  if (hours > 0) parts.push(`${hours}時間`)
-  if (minutes > 0) parts.push(`${minutes}分`)
-  parts.push(`${seconds}秒`)
-  return parts.join(' ')
+  return (
+    <>
+      {days > 0 && <>{days}<span className="countdown-unit">日</span></>}
+      {hours > 0 && <>{hours}<span className="countdown-unit">時間</span></>}
+      {minutes > 0 && <>{minutes}<span className="countdown-unit">分</span></>}
+      {seconds}<span className="countdown-unit">秒</span>
+    </>
+  )
 }
 
 const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
