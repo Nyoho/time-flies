@@ -3,8 +3,14 @@ const Time = class {
     this.date = date
     // this.date = date.toString();
     this.year = date.getFullYear()
-    this.nextNewYear = new Date(this.year + 1, 0, 1)
-    this.thisNewYear = new Date(this.year, 0, 1)
+    const newYearDate = (y) => {
+      const d = new Date(0)
+      d.setFullYear(y, 0, 1)
+      d.setHours(0, 0, 0, 0)
+      return d
+    }
+    this.nextNewYear = newYearDate(this.year + 1)
+    this.thisNewYear = newYearDate(this.year)
 
     this.ratio = (date - this.thisNewYear) / (this.nextNewYear - this.thisNewYear)
     this.remain = 1 - this.ratio
