@@ -6,7 +6,7 @@ import { Time } from './time'
 
 const formatCountdown = (ms) => {
   if (ms <= 0) return '間もなく'
-  const s = Math.floor(ms / 1000)
+  const s = Math.ceil(ms / 1000)
   const days = Math.floor(s / 86400)
   const hours = Math.floor((s % 86400) / 3600)
   const minutes = Math.floor((s % 3600) / 60)
