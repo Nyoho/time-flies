@@ -44,6 +44,7 @@ const Main = () => {
   const handleTimeSlip = () => {
     if (inputDateTime) {
       const targetTime = new Date(inputDateTime)
+      if (isNaN(targetTime.getTime())) return
       const now = new Date()
       const newOffset = targetTime.getTime() - now.getTime()
       setTimeOffset(newOffset)
@@ -117,7 +118,7 @@ const Main = () => {
               <p>Fork me <a href="https://github.com/Nyoho/time-flies">Nyoho/time-flies</a></p>
               <hr />
               <p>
-                Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2020.
+                Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2026.
                 テンプレートは <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。
                 Photo by <a href="https://www.flickr.com/photos/wordsnpix/6143515789/">Richard Cahan</a>
               </p>

@@ -4,7 +4,7 @@ import Ratio from './ratio.jsx'
 import TweetItem from './TweetItem'
 import { Time } from './time'
 
-const formatCountdown = (ms) => {
+export const formatCountdown = (ms) => {
   if (ms <= 0) return '間もなく'
   const s = Math.ceil(ms / 1000)
   const days = Math.floor(s / 86400)
