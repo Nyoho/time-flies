@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 const TimeSlipModal = ({
   isModalOpen,
   inputDateTime,
@@ -6,6 +8,67 @@ const TimeSlipModal = ({
   handleTimeSlip,
   resetToCurrentTime,
 }) => {
+  const modalRef = useRef(null)
+  const closeButtonRef = useRef(null)
+  const previousFocusRef = useRef(null)
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      return
+    }
+
+    previousFocusRef.current = document.activeElement
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
+
+    const handleKeyDown = (event) => {
+      if (!modalRef.current) {
+        return
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        handleCloseModal()
+        return
+      }
+
+      if (event.key !== 'Tab') {
+        return
+      }
+
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+      )
+
+      if (focusableElements.length === 0) {
+        event.preventDefault()
+        return
+      }
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+      const activeElement = document.activeElement
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault()
+        lastElement.focus()
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault()
+        firstElement.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+      if (previousFocusRef.current instanceof HTMLElement) {
+        previousFocusRef.current.focus()
+      }
+    }
+  }, [isModalOpen, handleCloseModal])
+
   if (!isModalOpen) {
     return null
   }
@@ -13,18 +76,30 @@ const TimeSlipModal = ({
   return (
     <>
       <div
+        ref={modalRef}
         className={`modal fade ${isModalOpen ? 'show' : ''}`}
         style={{ display: isModalOpen ? 'block' : 'none' }}
         tabIndex="-1"
         role="dialog"
+        aria-modal="true"
+        aria-labelledby="time-slip-modal-title"
+        aria-describedby="time-slip-modal-description"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">時刻ワープ</h5>
-              <button type="button" className="btn-close" onClick={handleCloseModal} aria-label="Close"></button>
+              <h5 id="time-slip-modal-title" className="modal-title">
+                時刻ワープ
+              </h5>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                className="btn-close"
+                onClick={handleCloseModal}
+                aria-label="閉じる"
+              ></button>
             </div>
-            <div className="modal-body">
+            <div id="time-slip-modal-description" className="modal-body">
               <div className="form-group">
                 <label htmlFor="modalDateTime">時刻:</label>
                 <input
@@ -51,18 +126,7 @@ const TimeSlipModal = ({
         </div>
       </div>
 
-      {isModalOpen && (
-        // biome-ignore lint/a11y/useSemanticElements: Bootstrap modal-backdrop requires a div
-        <div
-          className="modal-backdrop fade show"
-          role="button"
-          tabIndex={-1}
-          onClick={handleCloseModal}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') handleCloseModal()
-          }}
-        ></div>
-      )}
+      {isModalOpen && <div className="modal-backdrop fade show" aria-hidden="true" onClick={handleCloseModal}></div>}
     </>
   )
 }
