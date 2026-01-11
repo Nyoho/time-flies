@@ -13,10 +13,26 @@ export const formatCountdown = (ms) => {
   const seconds = s % 60
   return (
     <>
-      {days > 0 && <>{days}<span className="countdown-unit">日</span></>}
-      {hours > 0 && <>{hours}<span className="countdown-unit">時間</span></>}
-      {minutes > 0 && <>{minutes}<span className="countdown-unit">分</span></>}
-      {seconds}<span className="countdown-unit">秒</span>
+      {days > 0 && (
+        <>
+          {days}
+          <span className="countdown-unit">日</span>
+        </>
+      )}
+      {hours > 0 && (
+        <>
+          {hours}
+          <span className="countdown-unit">時間</span>
+        </>
+      )}
+      {minutes > 0 && (
+        <>
+          {minutes}
+          <span className="countdown-unit">分</span>
+        </>
+      )}
+      {seconds}
+      <span className="countdown-unit">秒</span>
     </>
   )
 }
@@ -31,31 +47,17 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
       <div className="main">
         <div className="vert-text">
           <div className="container">
-            {/* biome-ignore lint/a11y/useSemanticElements: Bootstrap row requires a div */}
-            <div
-              className="row"
-              role="button"
-              tabIndex={0}
-              onClick={onTimeClick}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  onTimeClick()
-                }
-              }}
-              style={{ cursor: 'pointer' }}
-            >
+            <div className="row">
               <div className="col text-center">
                 <h1>{time.year}</h1>
                 <h3>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h3>
+                <button type="button" className="time-slip-trigger" onClick={onTimeClick}>
+                  タイムスリップ
+                </button>
                 {isTimeSlipped && (
                   <div className="time-slip-indicator">
                     <span className="time-slip-label">タイムスリップ中</span>
-                    <button
-                      type="button"
-                      className="time-slip-reset"
-                      onClick={(e) => { e.stopPropagation(); onResetTime(); }}
-                    >
+                    <button type="button" className="time-slip-reset" onClick={onResetTime}>
                       現在時刻に戻る
                     </button>
                   </div>

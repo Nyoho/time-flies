@@ -37,7 +37,7 @@ describe('CircleItem', () => {
     expect(screen.getByText('フロント')).toBeInTheDocument()
     expect(screen.queryByText('バック')).not.toBeInTheDocument()
 
-    fireEvent.click(screen.getByText('フロント'))
+    fireEvent.click(screen.getByRole('button', { name: 'テストを切り替える' }))
     expect(handleFlip).toHaveBeenCalled()
 
     rerender(

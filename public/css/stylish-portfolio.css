@@ -168,6 +168,29 @@ i.service-icon {
   height: 140px;
 }
 
+.animate-switch-container .circle-box-container {
+  margin: 0;
+}
+
+.circle-toggle-button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.circle-toggle-button:focus-visible {
+  outline: 2px solid #93DBFE;
+  outline-offset: 4px;
+}
+
 .circle-box-container {
   position: relative;
   margin: 48px auto 0;
@@ -485,6 +508,45 @@ i.scroll:hover {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+}
+
+.time-slip-trigger {
+  margin-top: 1rem;
+  padding: 0.55rem 1.25rem;
+  border: 1px solid rgba(147, 219, 254, 0.65);
+  border-radius: 9999px;
+  color: #d8f4ff;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(147, 219, 254, 0.28), transparent 48%),
+    linear-gradient(135deg, rgba(147, 219, 254, 0.18), rgba(147, 219, 254, 0.04));
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 0 18px rgba(147, 219, 254, 0.16),
+    0 0 24px rgba(147, 219, 254, 0.12);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.time-slip-trigger:hover {
+  border-color: rgba(147, 219, 254, 1);
+  box-shadow:
+    inset 0 0 20px rgba(147, 219, 254, 0.24),
+    0 0 28px rgba(147, 219, 254, 0.28);
+  transform: translateY(-1px);
+}
+
+.time-slip-trigger:active {
+  transform: translateY(0);
+}
+
+.time-slip-trigger:focus-visible {
+  outline: 2px solid #93dbfe;
+  outline-offset: 3px;
 }
 
 .time-slip-label {

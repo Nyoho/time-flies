@@ -39,21 +39,13 @@ const CircleItem = ({
     <div className="col-lg-2 col-md-4 col-sm-6 col-12 text-center mb-3">
       <div className="service-item">
         {flippable ? (
-          // biome-ignore lint/a11y/useSemanticElements: styled as a container, not a standalone button
-          <div
-            className="animate-switch-container"
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              if (onFlip) onFlip()
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                if (onFlip) onFlip()
-              }
-            }}
-          >
+          <div className="animate-switch-container">
+            <button
+              type="button"
+              className="circle-toggle-button"
+              onClick={onFlip}
+              aria-label={`${header}を切り替える`}
+            ></button>
             <div className="circle-box-container">
               <CSSTransition nodeRef={frontRef} in={!flipped} timeout={500} classNames="flip" unmountOnExit>
                 <div ref={frontRef} className="circle-box">
