@@ -118,7 +118,11 @@ const TimeSlipModal = ({
               <button type="button" className="btn btn-primary" onClick={handleTimeSlip}>
                 この時刻にタイムスリップ
               </button>
-              <button type="button" className="btn btn-outline-secondary" onClick={resetToCurrentTime}>
+              <button
+                type="button"
+                className="btn btn-outline-secondary time-slip-reset-button"
+                onClick={resetToCurrentTime}
+              >
                 現在時刻に戻る
               </button>
             </div>
