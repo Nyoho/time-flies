@@ -112,10 +112,10 @@ const TimeSlipModal = ({
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+              <button type="button" className="btn btn-secondary time-slip-cancel-button" onClick={handleCloseModal}>
                 キャンセル
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleTimeSlip}>
+              <button type="button" className="btn btn-primary time-slip-confirm-button" onClick={handleTimeSlip}>
                 この時刻にタイムスリップ
               </button>
               <button
