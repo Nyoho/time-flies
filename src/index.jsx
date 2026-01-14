@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { FaFacebook, FaXTwitter } from 'react-icons/fa6'
 import { Time } from './components/time.js'
 import TimeFlies from './components/time-flies.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -112,15 +113,30 @@ const Main = () => {
           <div className="row">
             <div className="col-md-6 offset-md-3 text-center">
               <ul className="list-inline">
-                <li><a href="http://twitter.com/NeXTSTEP2OSX/"><i className="fa fa-twitter fa-3x" /></a></li>
-                <li><a href="http://facebook.com/Nyoho"><i className="fa fa-facebook fa-3x" /></a></li>
+                <li>
+                  <a
+                    href="https://twitter.com/NeXTSTEP2OSX/"
+                    aria-label="X (Twitter)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaXTwitter style={{ fontSize: '2rem' }} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://facebook.com/Nyoho" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <FaFacebook style={{ fontSize: '2rem' }} />
+                  </a>
+                </li>
               </ul>
-              <p>Fork me <a href="https://github.com/Nyoho/time-flies">Nyoho/time-flies</a></p>
+              <p>
+                Fork me <a href="https://github.com/Nyoho/time-flies">Nyoho/time-flies</a>
+              </p>
               <hr />
               <p>
-                Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2026.
-                テンプレートは <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。
-                Photo by <a href="https://www.flickr.com/photos/wordsnpix/6143515789/">Richard Cahan</a>
+                Copyright &copy; <a href="https://nyoho.jp">Nyoho</a> 2013-2026. テンプレートは{' '}
+                <a href="http://startbootstrap.com/stylish-portfolio">Stylish Portfolio</a> からいただきました。 Photo
+                by <a href="https://www.flickr.com/photos/wordsnpix/6143515789/">Richard Cahan</a>
               </p>
             </div>
           </div>
