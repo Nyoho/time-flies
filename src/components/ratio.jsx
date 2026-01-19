@@ -7,9 +7,11 @@ import WarningMessage from './warning-message'
 const Remain = ({ time, onMilestoneChange }) => {
   const [flipped, setFlipped] = useState(false)
   const [degree, setDegree] = useState(2)
+  const [degreeInput, setDegreeInput] = useState('2')
   const [warning, setWarning] = useState(false)
 
   const frac = continuedFraction(time.ratio, degree)
+  const fracText = frac.toString()
 
   const nextChangeDate = useMemo(() => {
     if (!flipped) return null
@@ -17,7 +19,7 @@ const Remain = ({ time, onMilestoneChange }) => {
     if (nextRatio === null) return null
     const yearMs = time.nextNewYear.getTime() - time.thisNewYear.getTime()
     return new Date(time.thisNewYear.getTime() + nextRatio * yearMs)
-  }, [frac.toString(), degree, flipped])
+  }, [degree, flipped, time.nextNewYear, time.ratio, time.thisNewYear])
 
   useEffect(() => {
     if (onMilestoneChange) {
@@ -25,12 +27,12 @@ const Remain = ({ time, onMilestoneChange }) => {
         nextChangeDate
           ? {
               nextDate: nextChangeDate,
-              currentFraction: frac.toString(),
+              currentFraction: fracText,
             }
           : null,
       )
     }
-  }, [nextChangeDate, onMilestoneChange])
+  }, [fracText, nextChangeDate, onMilestoneChange])
 
   useEffect(() => {
     gtag('event', 'page_view', {
@@ -42,6 +44,7 @@ const Remain = ({ time, onMilestoneChange }) => {
 
   function handleChange(event) {
     const s = event.target.value
+    setDegreeInput(s)
     if (s === '') {
       setWarning(true)
       return
@@ -92,7 +95,14 @@ const Remain = ({ time, onMilestoneChange }) => {
       {flipped ? (
         <p>
           この分数は{degree}次の連分数近似です。
-          <input type="text" defaultValue={degree || '2'} size="3" onChange={handleChange} />
+          <input
+            type="number"
+            min="0"
+            step="1"
+            value={degreeInput}
+            className="ratio-degree-input"
+            onChange={handleChange}
+          />
           次に変更
           {warning ? <WarningMessage>非負の整数を入力して下さい</WarningMessage> : ''}
         </p>

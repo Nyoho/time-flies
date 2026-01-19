@@ -508,3 +508,14 @@ footer {
   outline: 2px solid rgba(147, 219, 254, 0.85);
   outline-offset: 3px;
 }
+
+.ratio-degree-input {
+  width: 4.5rem;
+  margin: 0 0.35rem;
+  text-align: right;
+}
+
+.ratio-degree-input::-webkit-outer-spin-button,
+.ratio-degree-input::-webkit-inner-spin-button {
+  margin-left: 0.2rem;
+}
