@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 const style = {
   display: 'block',
   padding: '8px',
@@ -6,6 +8,10 @@ const style = {
   borderRadius: '4px',
 }
 
-const WarningMessage = ({ children }) => <span style={style}>{children}</span>
+interface WarningMessageProps {
+  children: ReactNode
+}
+
+const WarningMessage = ({ children }: WarningMessageProps) => <span style={style}>{children}</span>
 
 export default WarningMessage

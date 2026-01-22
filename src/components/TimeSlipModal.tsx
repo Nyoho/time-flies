@@ -1,4 +1,14 @@
+import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useRef } from 'react'
+
+interface TimeSlipModalProps {
+  isModalOpen: boolean
+  inputDateTime: string
+  setInputDateTime: Dispatch<SetStateAction<string>>
+  handleCloseModal: () => void
+  handleTimeSlip: () => void
+  resetToCurrentTime: () => void
+}
 
 const TimeSlipModal = ({
   isModalOpen,
@@ -7,10 +17,10 @@ const TimeSlipModal = ({
   handleCloseModal,
   handleTimeSlip,
   resetToCurrentTime,
-}) => {
-  const modalRef = useRef(null)
-  const closeButtonRef = useRef(null)
-  const previousFocusRef = useRef(null)
+}: TimeSlipModalProps) => {
+  const modalRef = useRef<HTMLDivElement | null>(null)
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null)
+  const previousFocusRef = useRef<Element | null>(null)
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -21,7 +31,7 @@ const TimeSlipModal = ({
     document.body.style.overflow = 'hidden'
     closeButtonRef.current?.focus()
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (!modalRef.current) {
         return
       }
@@ -36,7 +46,7 @@ const TimeSlipModal = ({
         return
       }
 
-      const focusableElements = modalRef.current.querySelectorAll(
+      const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
         'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
       )
 

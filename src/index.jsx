@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { FaFacebook, FaXTwitter } from 'react-icons/fa6'
 import { Time } from './components/time.js'
-import TimeFlies from './components/time-flies.jsx'
+import TimeFlies from './components/time-flies'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
@@ -45,7 +45,7 @@ const Main = () => {
   const handleTimeSlip = () => {
     if (inputDateTime) {
       const targetTime = new Date(inputDateTime)
-      if (isNaN(targetTime.getTime())) return
+      if (Number.isNaN(targetTime.getTime())) return
       const now = new Date()
       const newOffset = targetTime.getTime() - now.getTime()
       setTimeOffset(newOffset)

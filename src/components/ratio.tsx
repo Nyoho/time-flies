@@ -1,10 +1,22 @@
+import type { ChangeEvent } from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import CircleItem from './CircleItem'
 import { continuedFraction, findNextFractionChange } from './continued-fraction'
 import TweetItem from './TweetItem'
+import type { Time } from './time'
 import WarningMessage from './warning-message'
 
-const Remain = ({ time, onMilestoneChange }) => {
+interface FractionMilestone {
+  nextDate: Date
+  currentFraction: string
+}
+
+interface RemainProps {
+  time: Time
+  onMilestoneChange?: (milestone: FractionMilestone | null) => void
+}
+
+const Remain = ({ time, onMilestoneChange }: RemainProps) => {
   const [flipped, setFlipped] = useState(false)
   const [degree, setDegree] = useState(2)
   const [degreeInput, setDegreeInput] = useState('2')
@@ -42,7 +54,7 @@ const Remain = ({ time, onMilestoneChange }) => {
     })
   }, [])
 
-  function handleChange(event) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const s = event.target.value
     setDegreeInput(s)
     if (s === '') {
@@ -113,7 +125,7 @@ const Remain = ({ time, onMilestoneChange }) => {
   )
 }
 
-const trackCustomEvent = (eventCategory, eventAction, eventLabel = null) => {
+const trackCustomEvent = (eventCategory: string, eventAction: string, eventLabel: boolean | null = null) => {
   gtag('event', eventCategory, {
     event_category: eventCategory,
     event_action: eventAction,

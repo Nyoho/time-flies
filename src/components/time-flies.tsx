@@ -1,10 +1,22 @@
 import { useState } from 'react'
 import CircleItem from './CircleItem'
-import Ratio from './ratio.jsx'
+import Ratio from './ratio'
 import TweetItem from './TweetItem'
 import { Time } from './time'
 
-export const formatCountdown = (ms) => {
+interface FractionMilestone {
+  nextDate: Date
+  currentFraction: string
+}
+
+interface TimeFliesProps {
+  time: Time
+  onTimeClick: () => void
+  isTimeSlipped: boolean
+  onResetTime: () => void
+}
+
+export const formatCountdown = (ms: number) => {
   if (ms <= 0) return '間もなく'
   const s = Math.ceil(ms / 1000)
   const days = Math.floor(s / 86400)
@@ -37,8 +49,8 @@ export const formatCountdown = (ms) => {
   )
 }
 
-const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }) => {
-  const [fractionMilestone, setFractionMilestone] = useState(null)
+const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesProps) => {
+  const [fractionMilestone, setFractionMilestone] = useState<FractionMilestone | null>(null)
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
 
