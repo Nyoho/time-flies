@@ -49,10 +49,17 @@ export const formatCountdown = (ms: number) => {
   )
 }
 
+const formatPercentParts = (value: number) => {
+  const [integerPart, decimalPart] = value.toFixed(7).split('.')
+  return { integerPart, decimalPart }
+}
+
 const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesProps) => {
   const [fractionMilestone, setFractionMilestone] = useState<FractionMilestone | null>(null)
   const progressPercent = (1 - time.remain) * 100
   const remainingPercent = time.remain * 100
+  const progressParts = formatPercentParts(progressPercent)
+  const remainingParts = formatPercentParts(remainingPercent)
 
   return (
     <div className={`time-flies ${isTimeSlipped ? 'time-slipped' : ''}`}>
@@ -92,13 +99,19 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
                     className="bg-primary text-black d-flex align-items-center justify-content-center small"
                     style={{ height: '28px', width: `${progressPercent}%` }}
                   >
-                    {progressPercent.toFixed(7)}%
+                    <span className="progress-percent-value">
+                      <span className="progress-percent-main">{progressParts.integerPart}</span>
+                      <span className="progress-percent-sub">.{progressParts.decimalPart}%</span>
+                    </span>
                   </span>
                   <span
                     className="d-flex align-items-center justify-content-center small"
                     style={{ height: '28px', width: `${remainingPercent}%` }}
                   >
-                    {remainingPercent.toFixed(7)}%
+                    <span className="progress-percent-value">
+                      <span className="progress-percent-main">{remainingParts.integerPart}</span>
+                      <span className="progress-percent-sub">.{remainingParts.decimalPart}%</span>
+                    </span>
                   </span>
                 </div>
               </div>
@@ -151,13 +164,17 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
               <div className="milestone-revealer-inner">
                 <div className="row mt-4 milestone-section">
                   <div className="col-md-6 offset-md-3 text-center">
-                    <h3>Some milestones</h3>
-                    <p className="milestone-label">連分数近似が次に変わるまで</p>
-                    <div className="milestone-countdown">
-                      {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
-                    </div>
-                    <div className="milestone-details">
-                      <span className="milestone-date">{fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}</span>
+                    <div className="milestone-card">
+                      <h3>Some milestones</h3>
+                      <p className="milestone-label">連分数近似が次に変わるまで</p>
+                      <div className="milestone-countdown">
+                        {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
+                      </div>
+                      <div className="milestone-details">
+                        <span className="milestone-date">
+                          {fractionMilestone?.nextDate.toLocaleString() ?? '\u00A0'}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
