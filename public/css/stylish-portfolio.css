@@ -546,3 +546,32 @@ footer {
 .ratio-degree-input::-webkit-inner-spin-button {
   margin-left: 0.2rem;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-enter,
+  .flip-enter-active,
+  .flip-exit,
+  .flip-exit-active,
+  .flip-exit-done {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  .milestone-revealer,
+  .milestone-revealer.milestone-visible,
+  .milestone-section,
+  .milestone-revealer.milestone-visible .milestone-section {
+    animation: none;
+    transition: none;
+  }
+
+  .time-slip-trigger,
+  .time-slip-reset,
+  .time-slip-confirm-button,
+  .time-slip-cancel-button,
+  .time-slip-reset-button {
+    transition: none;
+    transform: none;
+  }
+}
