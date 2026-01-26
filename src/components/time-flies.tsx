@@ -91,8 +91,8 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
                   role="progressbar"
                   aria-label="今年の経過割合"
                   aria-valuenow={progressPercent}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
+                  aria-valuemin={0}
+                  aria-valuemax={100}
                   style={{ height: '30px', fontSize: '1rem' }}
                 >
                   <span
@@ -117,7 +117,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
               </div>
             </div>
 
-            <div className="row justify-content-center" style={{ textAutospace: 'normal' }}>
+            <div className="row justify-content-center">
               <CircleItem
                 mainText=""
                 subText={`${Time.getDateString(time.date)}\n${Time.getTimeString(time.date)}`}
@@ -168,7 +168,9 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
                       <h3>Some milestones</h3>
                       <p className="milestone-label">連分数近似が次に変わるまで</p>
                       <div className="milestone-countdown">
-                        {fractionMilestone ? formatCountdown(fractionMilestone.nextDate - time.date) : '\u00A0'}
+                        {fractionMilestone
+                          ? formatCountdown(fractionMilestone.nextDate.getTime() - time.date.getTime())
+                          : '\u00A0'}
                       </div>
                       <div className="milestone-details">
                         <span className="milestone-date">

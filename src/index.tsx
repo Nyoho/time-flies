@@ -1,7 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { FaFacebook, FaXTwitter } from 'react-icons/fa6'
-import { Time } from './components/time.js'
+import { Time } from './components/time'
 import TimeFlies from './components/time-flies'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'

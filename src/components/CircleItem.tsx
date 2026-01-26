@@ -3,8 +3,8 @@ import { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 
 interface CircleItemProps {
-  mainText: string
-  subText: string
+  mainText?: string | number
+  subText?: string | number
   header: string
   children?: React.ReactNode
   flippable?: boolean
