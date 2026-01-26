@@ -31,7 +31,7 @@ const Main = () => {
     setIsPaused(false)
   }
 
-  const requestRef = useRef()
+  const requestRef = useRef<number | null>(null)
 
   const animate = useCallback(() => {
     if (!isPaused) {
@@ -146,4 +146,7 @@ const Main = () => {
   )
 }
 
-createRoot(document.getElementById('root')).render(<Main />)
+const rootElement = document.getElementById('root')
+if (rootElement) {
+  createRoot(rootElement).render(<Main />)
+}
