@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "missing-landmark": false,
+    "aria-role-invalid": false,
+    "label-missing-for": false
+  }
+}

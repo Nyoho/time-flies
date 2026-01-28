@@ -9,6 +9,7 @@ const TweetItem = ({ text }: TweetItemProps) => (
     <p>
       <a
         href={`https://twitter.com/intent/tweet?url=https%3A%2F%2F${window.location.hostname}&hashtags=TimeFlies&text=${encodeURIComponent(text)}`}
+        aria-label="Xで共有"
       >
         <FaTwitter style={{ fontSize: 'x-large' }} />
       </a>
