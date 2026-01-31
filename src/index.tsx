@@ -73,13 +73,6 @@ const Main = () => {
 
   return (
     <>
-      <TimeFlies
-        time={time}
-        onTimeClick={handleOpenModal}
-        isTimeSlipped={isTimeSlipped}
-        onResetTime={resetToCurrentTime}
-      />
-
       <Suspense fallback={<div>Loading...</div>}>
         <TimeSlipModal
           isModalOpen={isModalOpen}
@@ -91,22 +84,31 @@ const Main = () => {
         />
       </Suspense>
 
-      <div id="about" className="intro">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 text-center">
-              <h2>光陰、矢のごとし。</h2>
-              <p className="lead">時間が過ぎ去りゆくのは、まるで矢のようであります。</p>
+      <main>
+        <TimeFlies
+          time={time}
+          onTimeClick={handleOpenModal}
+          isTimeSlipped={isTimeSlipped}
+          onResetTime={resetToCurrentTime}
+        />
+
+        <div id="about" className="intro">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 offset-md-3 text-center">
+                <h2>光陰、矢のごとし。</h2>
+                <p className="lead">時間が過ぎ去りゆくのは、まるで矢のようであります。</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="callout intro">
-        <div className="vert-text">
-          <h1>Time flies.</h1>
+        <div className="callout intro">
+          <div className="vert-text">
+            <h1>Time flies.</h1>
+          </div>
         </div>
-      </div>
+      </main>
 
       <footer>
         <div className="container">

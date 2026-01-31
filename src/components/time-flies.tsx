@@ -66,10 +66,10 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
       <div className="main">
         <div className="vert-text">
           <div className="container">
-            <div className="row">
+            <header className="row">
               <div className="col text-center">
                 <h1>{time.year}</h1>
-                <h3>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h3>
+                <h2>{isTimeSlipped ? 'あの頃' : '今年'}はどのぐらい過ぎ去ったのだろう。</h2>
                 <button type="button" className="time-slip-trigger" onClick={onTimeClick}>
                   タイムスリップ
                 </button>
@@ -82,7 +82,7 @@ const TimeFlies = ({ time, onTimeClick, isTimeSlipped, onResetTime }: TimeFliesP
                   </div>
                 )}
               </div>
-            </div>
+            </header>
 
             <div className="row mt-5 mb-3">
               <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
