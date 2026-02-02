@@ -44,3 +44,19 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:a11y
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-a11y-report
+          path: playwright-report
+          if-no-files-found: ignore
+
+      - name: Upload Playwright traces/screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-a11y-results
+          path: test-results
+          if-no-files-found: ignore

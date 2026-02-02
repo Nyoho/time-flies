@@ -20,7 +20,7 @@
     "format": "biome format --write src",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:a11y": "playwright test",
+    "test:a11y": "playwright test --reporter=list,html",
     "a11y:static": "node scripts/run-be-a11y.mjs src reports/be-a11y-report.json",
     "size": "npm run build && size-limit"
   },

@@ -3,4 +3,6 @@
 /coverage
 /public/bundle.js*
 /dist
+/playwright-report
+/test-results
 *~
