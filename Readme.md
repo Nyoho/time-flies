@@ -40,6 +40,9 @@ Related CI workflow:
 
 https://github.com/nulltask/heroku-static-provider based
 
+This repository was originally started using https://github.com/nulltask/heroku-static-provider
+for static delivery on Heroku, but now there's no trace of it left.
+
 ## License
 
 MIT
